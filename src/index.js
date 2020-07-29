@@ -9,6 +9,8 @@ import store from "./redux/store";
 
 const pokeData = APIInterface();
 
+// Insert pokeData on Redux
+
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
