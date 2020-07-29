@@ -1,10 +1,10 @@
 import React from 'react'
 
-export function Checkout(props) {
+export function Product(props) {
 
     return (
         <main>
-            Checkout Test
+            Product Test
         </main>
     )
 }
