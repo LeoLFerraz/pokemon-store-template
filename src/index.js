@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
+import { APIInterface } from "./api-interface";
+import { Provider } from 'react-redux';
+import store from "./redux/store";
+
+// Load redux;
+
+const pokeData = APIInterface();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
