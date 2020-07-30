@@ -7,12 +7,26 @@
         span {
             display: block;
             text-align: center;
-            color: $font-secondary-color;
+            color: $font-primary-color;
             line-height: 35px;
         }
         svg {
-            fill: $font-secondary-color;
+            fill: $font-primary-color;
             margin-right: 10px;
+        }
+    }
+    #main-nav {
+        #pokestoreLogo {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .navbar-brand {
+            color: $font-primary-color;
+            display: flex;
+            .brand-name {
+
+            }
         }
     }
 }

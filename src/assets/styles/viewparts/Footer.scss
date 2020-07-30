@@ -2,5 +2,8 @@
 
 .footer {
     background-color: $secondary-color;
-    color: $font-secondary-color;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
 }
