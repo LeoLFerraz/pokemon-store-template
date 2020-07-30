@@ -10,3 +10,5 @@ export function APIInterface() {
     // For each pokemon in data.pokemon:
     // get pokemon.url and process data to fit model (src/models/Pokemon.js)
 }
+
+

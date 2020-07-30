@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { DefaultCarousel } from "../components/DefaultCarousel";
 
 export function Home(props) {
     // Full-Width Banner
@@ -20,9 +21,13 @@ export function Home(props) {
     // (4 100% width, auto height images) MOB
 
     return (
-        <main>
-
-            Scaffolding Test
+        <main className="home">
+            <DefaultCarousel>
+                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner" alt="Pokemon"/>
+                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner+2" alt="Pokemon"/>
+                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner+3" alt="Pokemon"/>
+                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner+4" alt="Pokemon"/>
+            </DefaultCarousel>
         </main>
     )
 }

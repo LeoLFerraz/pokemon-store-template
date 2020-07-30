@@ -1,0 +1,24 @@
+.default-carousel {
+    .slick-prev {
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: calc(50%);
+        left: 25px;
+        z-index: 2;
+        &:before {
+            content: '';
+        }
+    }
+    .slick-next {
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: calc(50%);
+        right: 25px;
+        z-index: 2;
+        &:before {
+            content: '';
+        }
+    }
+}

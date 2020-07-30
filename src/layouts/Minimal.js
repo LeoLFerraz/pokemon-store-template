@@ -2,8 +2,8 @@ import React from 'react';
 
 export function MinimalLayout(props) {
         return (
-                <body className={props.bodyClasses}>
+                <div>
                         {props.children}
-                </body>
+                </div>
         )
 }
