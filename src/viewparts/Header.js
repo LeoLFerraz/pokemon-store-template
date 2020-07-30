@@ -4,6 +4,7 @@ import { DefaultCarousel } from "../components/DefaultCarousel";
 import { InfoCircle, ExclamationCircle } from "react-bootstrap-icons";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import { ReactComponent as PokeStoreLogo } from "../assets/svg/Pokeball.svg"
+import { Link } from "react-router-dom";
 
 export function Header(props) {
     // Tipbar (hidden if scroll-top is anywhere but 0);
@@ -21,9 +22,9 @@ export function Header(props) {
                 <div className="container">
                     <nav id="main-nav">
                         <Navbar expand="lg">
-                            <Navbar.Brand>
+                            <Navbar.Brand as={Link} to="/">
                                 <PokeStoreLogo id="pokestoreLogo" />
-                                <div className="brand-name">PokeStore<br/>Fire</div>
+                                <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
                             </Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">

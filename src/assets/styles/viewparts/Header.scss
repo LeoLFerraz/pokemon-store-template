@@ -17,15 +17,21 @@
     }
     #main-nav {
         #pokestoreLogo {
-            width: 50px;
-            height: auto;
+            width: auto;
+            height: 40px;
             margin-right: 10px;
         }
         .navbar-brand {
             color: $font-primary-color;
             display: flex;
+            align-items: center;
             .brand-name {
-
+                font-size: 1rem;
+                text-align: center;
+                &-themed {
+                    color: $primary-color-lighter;
+                    text-shadow: 0 0 5px $primary-color-darker;
+                }
             }
         }
     }

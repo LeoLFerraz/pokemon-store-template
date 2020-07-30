@@ -1,9 +1,16 @@
 @import 'variables';
+@import 'fonts';
 
-html * {
+html {
     color: $font-primary-color;
-    &:focus {
-        outline: none;
+    font-size: 16px;
+    * {
+        &:focus {
+            outline: none;
+        }
+    }
+    body {
+        font-family: Montserrat, sans-serif;
     }
 }
 
