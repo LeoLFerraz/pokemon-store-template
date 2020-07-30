@@ -15,14 +15,15 @@ export const DefaultCarousel = (props) => {
         speed: 500,
         slidesToShow: props.desktopShow || 1,
         slidesToScroll: props.desktopShow || 1,
-        prevArrow: <SlickButtonFix> <ArrowLeftCircleFill color="royalblue" size={36} /> </SlickButtonFix>,
-        nextArrow: <SlickButtonFix> <ArrowRightCircleFill color="royalblue" size={36} /> </SlickButtonFix>,
+        prevArrow: <SlickButtonFix> <ArrowLeftCircleFill size={36} /> </SlickButtonFix>,
+        nextArrow: <SlickButtonFix> <ArrowRightCircleFill size={36} /> </SlickButtonFix>,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: props.mobileShow || 1,
                     slidesToScroll: props.mobileShow || 1,
+                    arrows: false
                 }
             }
         ]
