@@ -11,6 +11,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Load redux;
 
 const pokeData = APIInterface();
+pokeData.then(result =>{
+    console.log(result)
+});
 
 // Insert pokeData on Redux
 
