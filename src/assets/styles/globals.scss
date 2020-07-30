@@ -2,4 +2,7 @@
 
 html * {
     color: $font-primary-color;
+    &:focus {
+        outline: none;
+    }
 }

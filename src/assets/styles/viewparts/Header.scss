@@ -1,0 +1,18 @@
+@import "../variables";
+
+.header {
+    background-color: $primary-color-pastel;
+    #header-tipbar {
+        background-color: $secondary-color;
+        span {
+            display: block;
+            text-align: center;
+            color: $font-secondary-color;
+            line-height: 35px;
+        }
+        svg {
+            fill: $font-secondary-color;
+            margin-right: 10px;
+        }
+    }
+}

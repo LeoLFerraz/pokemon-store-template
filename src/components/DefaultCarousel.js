@@ -9,12 +9,15 @@ const SlickButtonFix = ({currentSlide, slideCount, children, ...props}) => (
 
 export const DefaultCarousel = (props) => {
     const settings = {
-        dots: true,
+        dots: props.dots,
         lazyLoad: true,
         infinite: true,
         speed: 500,
         slidesToShow: props.desktopShow || 1,
         slidesToScroll: props.desktopShow || 1,
+        autoplay: props.autoplay,
+        autoplaySpeed: props.autoplaySpeed,
+        arrows: props.arrows,
         prevArrow: <SlickButtonFix> <ArrowLeftCircleFill size={36} /> </SlickButtonFix>,
         nextArrow: <SlickButtonFix> <ArrowRightCircleFill size={36} /> </SlickButtonFix>,
         responsive: [

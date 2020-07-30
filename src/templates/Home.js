@@ -1,5 +1,6 @@
 import React from 'react';
 import { DefaultCarousel } from "../components/DefaultCarousel";
+import "../assets/styles/templates/Home.scss";
 
 export function Home(props) {
     // Full-Width Banner
@@ -22,11 +23,11 @@ export function Home(props) {
 
     return (
         <main className="home">
-            <DefaultCarousel>
-                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner" alt="Pokemon"/>
-                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner+2" alt="Pokemon"/>
-                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner+3" alt="Pokemon"/>
-                <img src="https://via.placeholder.com/728x90.png?text=Pokemon+Banner+4" alt="Pokemon"/>
+            <DefaultCarousel arrows={true} dots={true}>
+                <img src="https://via.placeholder.com/1920x450.png?text=COVID-19+and+Pokemon" alt="Pokemon"/>
+                <img src="https://via.placeholder.com/1920x450.png?text=PokeWhey:+Pokemon+Strength+Supplements" alt="Pokemon"/>
+                <img src="https://via.placeholder.com/1920x450.png?text=PokeOffer+of+the+Week" alt="Pokemon"/>
+                <img src="https://via.placeholder.com/1920x450.png?text=Daily+PokeDeals!" alt="Pokemon"/>
             </DefaultCarousel>
         </main>
     )
