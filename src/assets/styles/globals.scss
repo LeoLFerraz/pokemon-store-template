@@ -15,5 +15,7 @@ html {
 }
 
 #root {
-    padding-bottom:60px;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 100px;
 }

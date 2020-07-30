@@ -2,13 +2,16 @@ import React from 'react';
 import "../assets/styles/viewparts/Header.scss";
 import { DefaultCarousel } from "../components/DefaultCarousel";
 import { InfoCircle, ExclamationCircle } from "react-bootstrap-icons";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
-import { ReactComponent as PokeStoreLogo } from "../assets/svg/Pokeball.svg"
-import { ReactComponent as PokeUser } from "../assets/svg/Pokemon-Trainer.svg"
-import { ReactComponent as Cart } from "../assets/svg/Shopping-Cart.svg"
+import { Navbar, Nav, NavDropdown, Form, FormControl } from "react-bootstrap";
+import { ReactComponent as PokeStoreLogo } from "../assets/svg/Pokeball.svg";
+import { ReactComponent as PokeUser } from "../assets/svg/Pokemon-Trainer.svg";
+import { ReactComponent as Cart } from "../assets/svg/Shopping-Cart.svg";
+import { ReactComponent as Search } from "../assets/svg/Search.svg";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export function Header(props) {
+
+function RenderHeader(props) {
     return (
             <header className="header">
                 <div id="header-tipbar">
@@ -27,12 +30,15 @@ export function Header(props) {
 
                             <Form inline className="col-7">
                                 <FormControl type="text" placeholder="Search Pokemon" className="w-100" />
+                                <Search className="search-icon"/>
                             </Form>
                             <div className="col-3 header-control-nav">
                                 <div className="user-module-wrapper">
                                     <PokeUser className="user-module" /> Sign in
                                 </div>
-                                <Cart className="minicart-icon" />
+                                <div className="minicart-icon-wrapper" data-quantity={props.quantity}>
+                                    <Cart className="minicart-icon" />
+                                </div>
                             </div>
                         </Navbar>
                         <Nav className="mr-auto col-12">
@@ -43,11 +49,21 @@ export function Header(props) {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">All Pokemon</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
+                            <Nav.Link as={Link} to="/">PokeWarranty Policies</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog">Imported Pokemon</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog">Highest Discount Pokemon</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog?orderBy=">Lowest Prices</Nav.Link>
                         </Nav>
                     </nav>
                 </div>
             </header>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        quantity: state.cart.quantity
+    };
+};
+
+export let Header = connect(mapStateToProps)(RenderHeader);

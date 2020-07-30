@@ -7,10 +7,10 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
         case STORE_POKEMON_DATA: {
-            const { pokemon } = action.payload;
+            const pokemon = action.payload;
             return {
                 ...state,
-                pokemon: [...state.products, pokemon],
+                pokemon: pokemon
             };
         }
         default:

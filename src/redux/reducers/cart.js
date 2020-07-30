@@ -1,7 +1,8 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../actionTypes";
 
 const initialState = {
-    products: []
+    products: [],
+    quantity: 0
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +12,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 products: [...state.products, product],
+                quantity : state.quantity+1
             };
         }
         case REMOVE_FROM_CART: {
@@ -20,7 +22,8 @@ export default function(state = initialState, action) {
                 products: [
                 ...state.products.slice(0, cartIndex),
                 ...state.products.slice(cartIndex + 1)
-                ]
+                ],
+                quantity : state.quantity-1
             };
         }
         default:

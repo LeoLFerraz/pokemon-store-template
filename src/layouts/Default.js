@@ -5,10 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 
 export function DefaultLayout(props) {
     return (
-        <BrowserRouter>
-                <Header/>
-                    {props.children}
-                <Footer/>
-        </BrowserRouter>
+        <div>
+            <Header/>
+            {props.children}
+            <Footer/>
+        </div>
     )
 }
