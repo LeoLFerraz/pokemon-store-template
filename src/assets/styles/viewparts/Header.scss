@@ -16,23 +16,50 @@
         }
     }
     #main-nav {
-        #pokestoreLogo {
-            width: auto;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .navbar-brand {
+        .nav-link {
+            font-size: 0.9rem;
             color: $font-primary-color;
-            display: flex;
-            align-items: center;
-            .brand-name {
-                font-size: 1rem;
-                text-align: center;
-                &-themed {
-                    color: $primary-color-lighter;
-                    text-shadow: 0 0 5px $primary-color-darker;
-                }
+        }
+    }
+    #pokestoreLogo {
+        width: auto;
+        height: 40px;
+        margin-right: 10px;
+    }
+    .navbar-brand {
+        color: $font-primary-color;
+        display: flex;
+        align-items: center;
+        .brand-name {
+            font-weight: 500;
+            font-size: 1rem;
+            text-align: center;
+            &-themed {
+                color: $primary-color-lighter;
+                text-shadow: 0 0 5px $primary-color-darker;
             }
         }
+    }
+
+    .user-module-wrapper {
+        cursor: pointer;
+    }
+
+    .user-module, .minicart-icon {
+        width: 35px;
+        height: auto;
+        cursor: pointer;
+        fill: $font-primary-color-low-contrast;
+    }
+
+// TODO: minicart-icon must have an :after with cart reducer count inside.
+
+    .header-control-nav {
+        color: $font-primary-color;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
 }
