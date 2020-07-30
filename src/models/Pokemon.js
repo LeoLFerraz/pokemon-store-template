@@ -54,6 +54,7 @@ class Pokemon {
             spDefense: "Undefined Stat",
             speed: "Undefined Stat"
         }
+        this.seller = pokemon.seller || 'pokeStore'
     }
 }
 

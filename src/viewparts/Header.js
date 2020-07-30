@@ -43,11 +43,11 @@ function RenderHeader(props) {
                         </Navbar>
                         <Nav className="mr-auto col-12">
                             <NavDropdown title="Departments" className="departments-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/">Fire/Dragon</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/">Fire/Ground</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/">Fire/Flying</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">All Pokemon</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/">All Pokemon</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link as={Link} to="/">PokeWarranty Policies</Nav.Link>
                             <Nav.Link as={Link} to="/catalog">Imported Pokemon</Nav.Link>

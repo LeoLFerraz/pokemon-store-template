@@ -73,6 +73,67 @@ export function APIInterface() {
                                         let pokemonList = [];
                                         let length = json.pokemon.length;
                                         let processed = 0;
+                                        pokemonList.push(new Pokemon({
+                                            name: 'Agumon',
+                                            id: 'd1',
+                                            seller: 'digiStore',
+                                            sprite: 'https://smallimg.pngkey.com/png/small/114-1146777_pixel-art-agumon-pixel-art.png',
+                                            types: [
+                                                {
+                                                    type:{
+                                                        name: 'fire'
+                                                }
+                                                }
+                                            ],
+                                            evolutions: [
+                                                {
+                                                    name: 'Agumon',
+                                                    id: 'd1',
+                                                    sprite: 'https://smallimg.pngkey.com/png/small/114-1146777_pixel-art-agumon-pixel-art.png'
+                                                }
+                                            ]
+                                        }));
+                                        pokemonList.push(new Pokemon({
+                                            name: 'Gabumon',
+                                            id: 'd2',
+                                            seller: 'digiStore',
+                                            sprite: 'https://www.spriters-resource.com/resources/sheet_icons/50/53431.png',
+                                            types: [
+                                                {
+                                                    type:{
+                                                        name: 'fire'
+                                                    }
+                                                }
+                                            ],
+                                            evolutions: [
+                                                {
+                                                    name: 'Gabumon',
+                                                    id: 'd2',
+                                                    sprite: 'https://www.spriters-resource.com/resources/sheet_icons/50/53431.png'
+                                                }
+                                            ]
+                                        }));
+                                        pokemonList.push(new Pokemon({
+                                            name: 'Patamon',
+                                            id: 'd3',
+                                            seller: 'digiStore',
+                                            sprite: 'https://vignette.wikia.nocookie.net/pokemonwack/images/9/94/2952.png/revision/latest?cb=20200307181312',
+                                            types: [
+                                                {
+                                                    type:{
+                                                        name: 'fire'
+                                                    }
+                                                }
+                                            ],
+                                            evolutions: [
+                                                {
+                                                    name: 'Patamon',
+                                                    id: 'd3',
+                                                    sprite: 'https://vignette.wikia.nocookie.net/pokemonwack/images/9/94/2952.png/revision/latest?cb=20200307181312'
+                                                }
+                                            ]
+                                        }));
+
                                         json.pokemon.forEach((pokemon) =>{
                                             fetch(pokemon.pokemon.url)
                                                     .then((response) =>{
