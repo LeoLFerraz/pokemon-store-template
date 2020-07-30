@@ -41,6 +41,14 @@ class Pokemon {
         this.sprite = pokemon.sprite || "undefinedpokemon.png";
         this.spriteShiny = pokemon.spriteShiny || "undefinedpokemon.png";
         this.price = (Math.random()*100).toFixed(2);
+        this.stats = pokemon.stats || {
+            hp : "Undefined Stat",
+            attack: "Undefined Stat",
+            defense: "Undefined Stat",
+            spAttack: "Undefined Stat",
+            spDefense: "Undefined Stat",
+            speed: "Undefined Stat"
+        }
     }
 }
 

@@ -13,6 +13,16 @@ function recursiveEvolutions(evolvesTo) {
     return result;
 }
 
+function getStats(stats){
+    let result = {};
+    stats.forEach((stat) =>{
+        let name = stat.stat.name;
+        let value = stat.base_stat;
+        result[name] = value;
+    })
+    return result;
+}
+
 function searchEvolutionData(evolutions) {
     return new Promise((resolve, reject) => {
         let length = evolutions.length;
@@ -88,6 +98,7 @@ export function APIInterface() {
                                                                                                                                 result.spriteShiny = pokemonData.sprites.front_shiny;
                                                                                                                                 result.generation = speciesData.generation.name;
                                                                                                                                 result.evolutions = evolutions;
+                                                                                                                                result.stats = getStats(pokemonData.stats);
                                                                                                                                 pokemonList.push(new Pokemon(result));
                                                                                                                                 processed += 1;
                                                                                                                                 if (processed === length){
@@ -112,10 +123,5 @@ export function APIInterface() {
                                 });
                     })
         }
-
-        // Loading info:
-        // get /type/{storeType} from API
-        // For each pokemon in data.pokemon:
-        // get pokemon.url and process data to fit model (src/models/Pokemon.js)
     });
 }
