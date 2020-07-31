@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { ADD_TO_CART } from "../redux/actionTypes";
+
 
 function ProductComponent(props) {
-    console.log(props.pokemon);
     let pokeInfo;
     if(props.pokemon === undefined) {
         pokeInfo = 'Not found'
     }else{
         let types = props.pokemon.types.map(type =>{
-            return (<div style={{color: 'black'}}> {type.type.name} </div>)
+            return (<div style={{color: 'black'}}> {type} </div>)
         });
         let evolutions = props.pokemon.evolutions.map(evolution =>{
             return(
@@ -48,6 +49,7 @@ function ProductComponent(props) {
             <br />
             {types}
             <br />
+            <button onClick={() => props.dispatch({type: ADD_TO_CART, payload: props.pokemon.id})}>Add to cart</button>
             {evolutions}
         </div>
     }
