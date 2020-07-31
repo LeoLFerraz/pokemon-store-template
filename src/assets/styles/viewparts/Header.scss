@@ -25,16 +25,26 @@
             right: 25px;
             cursor: pointer;
         }
-        .departments-dropdown.show {
+        .departments-dropdown {
             &:before {
                 // Black-ish overlay when dropdown opens
                 content: '';
-                background-color: rgba(black, 0.5);
+                background-color: $generic-overlay-background;
                 position: fixed;
                 top: 0;
                 left: 0;
                 z-index: 10;
                 width: 100vw;
+                height: 0;
+                transition: height 0.2s ease;
+            }
+        }
+        .departments-dropdown.show {
+            .nav-link {
+                z-index: 11;
+            }
+            &:before {
+                // Black-ish overlay when dropdown opens
                 height: 100vh;
             }
         }

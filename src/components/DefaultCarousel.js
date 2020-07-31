@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import {ArrowLeftCircleFill, ArrowRightCircleFill} from 'react-bootstrap-icons';
+import { ArrowLeftCircleFill, ArrowRightCircleFill } from 'react-bootstrap-icons';
 import "../assets/styles/components/DefaultCarousel.scss";
 
 const SlickButtonFix = ({currentSlide, slideCount, children, ...props}) => (

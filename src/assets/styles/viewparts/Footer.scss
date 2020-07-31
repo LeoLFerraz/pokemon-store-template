@@ -8,7 +8,7 @@
     right:0;
     padding-bottom: 15px;
     .newsletter {
-        background-color: $secondary-color;
+        background-color: $primary-color-pastel;
         padding: 20px;
         .envelope-icon {
             width: auto;
@@ -21,14 +21,14 @@
             margin-right: 10px;
         }
         button {
-            background-color: $primary-color-pastel;
+            background-color: $secondary-color;
             border: none;
             transition: all 0.4s ease;
             &:hover {
-                background-color: $primary-color-lighter;
+                background-color: rgba($secondary-color,0.8);
             }
             &:focus {
-                box-shadow: 0 0 0 0.2rem rgba($primary-color-pastel,.5);
+                box-shadow: 0 0 0 0.2rem rgba($secondary-color,.5);
             }
         }
     }

@@ -1,7 +1,7 @@
 import {TOGGLE_LOADING} from "../actionTypes";
 
 const initialState = {
-    loading: false
+    loading: true
 };
 
 export default function(state = initialState, action) {

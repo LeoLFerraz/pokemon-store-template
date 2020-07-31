@@ -9,6 +9,7 @@ import { ReactComponent as Cart } from "../assets/svg/Shopping-Cart.svg";
 import { ReactComponent as Search } from "../assets/svg/Search.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { OPEN_CART } from "../redux/actionTypes";
 
 
 function RenderHeader(props) {
@@ -36,7 +37,7 @@ function RenderHeader(props) {
                                 <div className="user-module-wrapper">
                                     <PokeUser className="user-module" /> Sign in
                                 </div>
-                                <div className="minicart-icon-wrapper" data-quantity={props.quantity}>
+                                <div className="minicart-icon-wrapper" data-quantity={props.quantity} onClick={() => {props.dispatch({type: OPEN_CART})}}>
                                     <Cart className="minicart-icon" />
                                 </div>
                             </div>

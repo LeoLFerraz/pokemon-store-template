@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from '../viewparts/Header';
 import { Footer } from '../viewparts/Footer';
+import { Minicart } from "../components/Minicart";
 
 export function DefaultLayout(props) {
     return (
@@ -8,6 +9,7 @@ export function DefaultLayout(props) {
             <Header/>
             {props.children}
             <Footer/>
+            <Minicart />
         </div>
     )
 }
