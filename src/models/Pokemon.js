@@ -54,7 +54,22 @@ class Pokemon {
             spDefense: "Undefined Stat",
             speed: "Undefined Stat"
         }
-        this.seller = pokemon.seller || 'pokeStore'
+        this.seller = pokemon.seller || 'pokeStore';
+        let random = Math.floor(Math.random() * (0 - 6)) + 6;
+        console.log(random);
+        switch(random){
+            case 1:
+                this.flags = "Weekly_Promotion";
+                break;
+            case 2:
+                this.flags = "Daily_Discount";
+                break;
+            case 3:
+                this.flags = "PokeDeal_2020";
+                break;
+            default:
+                this.flags = "";
+        }
     }
 }
 

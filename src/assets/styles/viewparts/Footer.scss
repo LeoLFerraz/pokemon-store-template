@@ -1,10 +1,95 @@
 @import "../variables";
 
 .footer {
-    background-color: $secondary-color;
-    height: 100px;
+    background-color: $color-white;
     position:absolute;
     left:0;
     bottom:0;
     right:0;
+    padding-bottom: 15px;
+    .newsletter {
+        background-color: $secondary-color;
+        padding: 20px;
+        .envelope-icon {
+            width: auto;
+            height: 75px;
+            padding: 20px;
+            border: 1px solid $font-primary-color-low-contrast;
+            fill: $font-primary-color-low-contrast;
+            border-radius: 50%;
+            overflow: visible;
+            margin-right: 10px;
+        }
+        button {
+            background-color: $primary-color-pastel;
+            border: none;
+            transition: all 0.4s ease;
+            &:hover {
+                background-color: $primary-color-lighter;
+            }
+            &:focus {
+                box-shadow: 0 0 0 0.2rem rgba($primary-color-pastel,.5);
+            }
+        }
+    }
+
+    .newsletter-text-wrapper {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+        color: $font-primary-color-low-contrast;
+    }
+
+    .footer-text {
+        font-size: 0.6rem;
+        text-align: center;
+        margin-top: 15px;
+    }
+    #pokestoreLogo {
+        width: auto;
+        height: 40px;
+        margin-right: 10px;
+    }
+    .store-brand {
+        user-select: none;
+        display: flex;
+        align-items: center;
+        .brand-name {
+            color: $font-secondary-color;
+            font-weight: 500;
+            font-size: 1rem;
+            text-align: center;
+            &-themed {
+                color: $primary-color-lighter;
+                text-shadow: 0 0 5px $primary-color-darker;
+            }
+        }
+    }
+
+    .footer-section-title {
+        display: block;
+        font-weight: 500;
+        color: $font-secondary-color;
+        margin-bottom: 10px;
+    }
+    .payment-forms-wrapper, .social-media-wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        svg {
+            height: 50px;
+            width: auto;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .social-media-wrapper {
+        svg {
+            height: 40px;
+            cursor: pointer;
+        }
+    }
 }
