@@ -54,12 +54,13 @@ export default function(state = initialState, action) {
             let cartIndex = state.products.findIndex((product) => {
                 return product.id === id;
             });
+            console.log("pokeID: ", id);
+            console.log("index: ", cartIndex);
+            let productsCopy = state.products;
+            console.log(productsCopy.splice(cartIndex, 1))
             let newState = {
                 ...state,
-                products: [
-                ...state.products.slice(0, cartIndex),
-                ...state.products.slice(cartIndex + 1)
-                ],
+                products: productsCopy,
                 quantity : recalculateQuantity(state.products)
             };
 

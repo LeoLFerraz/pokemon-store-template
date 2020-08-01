@@ -61,12 +61,15 @@ export function APIInterface() {
         let localPokemon = localStorage.getItem('pokemon');
         if (localPokemon){
             let localTypes = localStorage.getItem('types');
+            let localGenerations = localStorage.getItem('generations');
             // return parsed local storage if OK
             localPokemon = JSON.parse(localPokemon);
             localTypes = JSON.parse(localTypes);
+            localGenerations = JSON.parse(localGenerations);
             let result = {
                 pokemon: localPokemon,
-                types: localTypes
+                types: localTypes,
+                generations: localGenerations
             };
             resolve(result);
         } else {
@@ -78,6 +81,7 @@ export function APIInterface() {
                                     let pokemonLoop = new Promise((resolve, reject) =>{
                                         let pokemonList = [];
                                         let typeList = [];
+                                        let generationList = [];
                                         let length = json.pokemon.length;
                                         let processed = 0;
                                         pokemonList.push(new Pokemon({
@@ -152,7 +156,13 @@ export function APIInterface() {
                                                                                                                                 });
                                                                                                                                 result.sprite = pokemonData.sprites.front_default;
                                                                                                                                 result.spriteShiny = pokemonData.sprites.front_shiny;
+                                                                                                                                result.sprites = Object.values(pokemonData.sprites).filter(sprite => {
+                                                                                                                                    return (typeof sprite === 'string')
+                                                                                                                                });
                                                                                                                                 result.generation = speciesData.generation.name;
+                                                                                                                                if (!generationList.includes(result.generation)){
+                                                                                                                                    generationList.push(result.generation);
+                                                                                                                                }
                                                                                                                                 result.evolutions = evolutions;
                                                                                                                                 result.stats = getStats(pokemonData.stats);
                                                                                                                                 pokemonList.push(new Pokemon(result));
@@ -160,8 +170,9 @@ export function APIInterface() {
                                                                                                                                 if (processed === length){
                                                                                                                                     let result = {
                                                                                                                                         pokemon: pokemonList,
-                                                                                                                                        types: typeList
-                                                                                                                                    }
+                                                                                                                                        types: typeList,
+                                                                                                                                        generations: generationList
+                                                                                                                                    };
                                                                                                                                     resolve(result);
                                                                                                                                 }
                                                                                                                             })
@@ -179,6 +190,7 @@ export function APIInterface() {
                                         });
                                         localStorage.setItem('pokemon', JSON.stringify(result.pokemon));
                                         localStorage.setItem('types', JSON.stringify(result.types));
+                                        localStorage.setItem('generations', JSON.stringify(result.generations));
                                         resolve(result);
                                     });
                                 });

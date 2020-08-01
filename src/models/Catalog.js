@@ -20,7 +20,7 @@ class Catalog {
         let name = filters.name;
         let generations = filters.generations;
         let types = filters.types;
-        let {attack, defense, hp, 'special-attack' : specialAttack, 'special-defense' : specialDefense, speed} = filters.stats || {};
+        let {attack, defense, hp, spAttack, spDefense, speed} = filters.stats || {};
         if(isNaN(filters.id)) {
             minId = filters.id?.gt || minId;
             maxId = filters.id?.lt || maxId;
@@ -36,14 +36,14 @@ class Catalog {
         }
         this.catalog = collection.filter(item => {
             let nameTest = (name ? item.name.includes(name) : true);
-            let generationTest = (generations ? generations.includes(item.generation) : true);
-            let typeTest = (types ? item.types.some(type => types.includes(type)) : true);
+            let generationTest = ((generations && generations.length > 0) ? generations.includes(item.generation) : true);
+            let typeTest = ((types && types.length > 0) ? item.types.some(type => types.includes(type)) : true);
             let idTeste = ((item.id > minId) && (item.id < maxId));
             let attackTest = (attack ? item.stats.attack >= attack : true);
             let defenseTest = (defense ? item.stats.defense >= defense : true);
             let hpTest = (hp ? item.stats.hp >= hp : true);
-            let specialAttackTest = (specialAttack ? item.stats['special-attack'] >= specialAttack : true);
-            let specialDefenseTest = (specialDefense ? item.stats['special-defense'] >= specialDefense : true);
+            let specialAttackTest = (spAttack ? item.stats['special-attack'] >= spAttack : true);
+            let specialDefenseTest = (spDefense ? item.stats['special-defense'] >= spDefense : true);
             let speedTest = (speed ? item.stats.speed >= speed : true);
             return (nameTest && generationTest && idTeste && typeTest && attackTest && defenseTest && hpTest && specialAttackTest && specialDefenseTest && speedTest);
         });

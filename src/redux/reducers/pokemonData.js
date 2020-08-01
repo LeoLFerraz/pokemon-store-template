@@ -2,7 +2,8 @@ import { STORE_POKEMON_DATA } from "../actionTypes";
 
 const initialState = {
     pokemon: [],
-    types: []
+    types: [],
+    generations: []
 };
 
 export default function(state = initialState, action) {
@@ -10,10 +11,12 @@ export default function(state = initialState, action) {
         case STORE_POKEMON_DATA: {
             const pokemon = action.payload.pokemon;
             const types = action.payload.types;
+            const generations = action.payload.generations;
             return {
                 ...state,
                 pokemon: pokemon,
-                types: types
+                types: types,
+                generations: generations
             };
         }
         default:

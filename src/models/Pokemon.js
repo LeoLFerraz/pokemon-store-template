@@ -40,6 +40,7 @@ class Pokemon {
         this.types = pokemon.types || ["Undefined Type"];
         this.sprite = pokemon.sprite || "undefinedpokemon.png";
         this.spriteShiny = pokemon.spriteShiny || "undefinedpokemon.png";
+        this.sprites = pokemon.sprites || [];
         this.price = (Math.random()*100).toFixed(2);
         if (Math.random() > .5){
             this.discountedPrice =  (Math.random() * (this.price-1)).toFixed(2);
@@ -56,7 +57,6 @@ class Pokemon {
         }
         this.seller = pokemon.seller || 'pokeStore';
         let random = Math.floor(Math.random() * (0 - 6)) + 6;
-        console.log(random);
         switch(random){
             case 1:
                 this.flags = "Weekly_Promotion";

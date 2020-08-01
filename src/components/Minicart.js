@@ -37,7 +37,7 @@ const MinicartComponent = (props) => {
                     <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
                 </td>
                 <td className="product-price">${(pokemon?.discountedPrice * product?.quantity).toFixed(2)}</td>
-                <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: pokemon.id})}}><X /></td>
+                <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: {id: pokemon.id}})}}><X /></td>
             </tr>
         )
     });
