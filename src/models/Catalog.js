@@ -47,17 +47,11 @@ class Catalog {
             let specialAttackTest = (spAttack ? item.stats['special-attack'] >= spAttack : true);
             let specialDefenseTest = (spDefense ? item.stats['special-defense'] >= spDefense : true);
             let speedTest = (speed ? item.stats.speed >= speed : true);
-            if (item.seller =='digiStore'){
-                console.log({nameTest , sellerTest, generationTest , idTeste , typeTest , attackTest , defenseTest , hpTest , specialAttackTest , specialDefenseTest , speedTest})
-            }
             return (nameTest && sellerTest && generationTest && idTeste && typeTest && attackTest && defenseTest && hpTest && specialAttackTest && specialDefenseTest && speedTest);
         });
         switch (filters.orderBy) {
             case 'name':
                 this.catalog.sort((a, b) => (a.name > b.name) ? 1 : -1);
-                break;
-            case 'id':
-                this.catalog.sort((a, b) => (a.id > b.id) ? 1 : -1);
                 break;
             case 'hp':
                 this.catalog.sort((a, b) => (a.stats.hp > b.stats.hp) ? 1 : -1);
@@ -77,8 +71,19 @@ class Catalog {
             case 'spDefense':
                 this.catalog.sort((a, b) => (a.stats['special-defense'] > b.stats['special-defense']) ? 1 : -1);
                 break;
+            case 'priceAsc' :
+                this.catalog.sort((a, b) => (a.discountedPrice > b.discountedPrice) ? 1 : -1);
+                break;
+            case 'priceDesc' :
+                this.catalog.sort((a, b) => (a.discountedPrice < b.discountedPrice) ? 1 : -1);
+                break;
+            case 'discount':
+                this.catalog.sort((a, b) => (a.priceDifference < b.priceDifference) ? 1 : -1);
+                break;
             default:
+            case 'id':
                 this.catalog.sort((a, b) => (a.id > b.id) ? 1 : -1);
+                break;
         }
     }
 }

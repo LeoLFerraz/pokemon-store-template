@@ -16,7 +16,7 @@ export function Routes() {
     return (
         <BrowserRouter>
             <Route path="/" exact={true}> <DefaultLayout> <Home /> </DefaultLayout> </Route>
-            <Route path="/catalog" exact={true} render={ routerProps => <DefaultLayout> <Catalog query={routerProps.location.search}/> </DefaultLayout>} />
+            <Route path="/catalog" exact={true} render={ routerProps => <DefaultLayout> <Catalog query={routerProps.location.search} key={routerProps.location.search}/> </DefaultLayout>} />
             <Route path="/pokemon/:id" exact={true} render={ routerProps => <DefaultLayout> <Product id={routerProps.match.params.id}/> </DefaultLayout>} />
             <Route path="/checkout" exact={true}> <MinimalLayout> <Checkout /> </MinimalLayout> </Route>
         </BrowserRouter>

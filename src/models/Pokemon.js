@@ -47,6 +47,7 @@ class Pokemon {
         }else {
             this.discountedPrice = this.price;
         }
+        this.priceDifference = Math.floor(100-100*(this.discountedPrice/this.price));
         this.stats = pokemon.stats || {
             hp : "Undefined Stat",
             attack: "Undefined Stat",

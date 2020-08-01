@@ -53,9 +53,11 @@ function RenderHeader(props) {
                         </Navbar>
                         <Nav className="mr-auto col-12">
                             <NavDropdown title="Departments" className="departments-dropdown">
-                                <NavDropdown.Item as={Link} to="/">Fire/Dragon</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/">Fire/Ground</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/">Fire/Flying</NavDropdown.Item>
+                                {props.types.map((value, index) => {
+                                    if(value !== "fire") {
+                                        return <NavDropdown.Item className="department-link" key={'type' + index} as={Link} to={"/catalog" + value}>{value}</NavDropdown.Item>
+                                    }
+                                })}
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} to="/">All Pokemon</NavDropdown.Item>
                             </NavDropdown>
@@ -72,7 +74,8 @@ function RenderHeader(props) {
 
 const mapStateToProps = (state) => {
     return {
-        quantity: state.cart.quantity
+        quantity: state.cart.quantity,
+        types: state.pokemonData.types
     };
 };
 

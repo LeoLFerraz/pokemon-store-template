@@ -26,6 +26,9 @@
             cursor: pointer;
             fill: $primary-color-pastel;
         }
+        .department-link {
+            text-transform: capitalize;
+        }
         .departments-dropdown {
             &:before {
                 // Black-ish overlay when dropdown opens
