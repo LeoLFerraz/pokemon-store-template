@@ -77,6 +77,8 @@ class Catalog {
             case 'spDefense':
                 this.catalog.sort((a, b) => (a.stats['special-defense'] > b.stats['special-defense']) ? 1 : -1);
                 break;
+            default:
+                this.catalog.sort((a, b) => (a.id > b.id) ? 1 : -1);
         }
     }
 }

@@ -7,7 +7,7 @@ function ProductComponent(props) {
     let pokeInfo;
     if(props.pokemon === undefined) {
         pokeInfo = 'Not found'
-    }else{
+    } else {
         let types = props.pokemon.types.map(type =>{
             return (<div style={{color: 'black'}}> {type} </div>)
         });

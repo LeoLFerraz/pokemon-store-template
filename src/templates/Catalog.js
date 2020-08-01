@@ -94,7 +94,6 @@ export function Catalog(props) {
                         <option value='speed'>Speed</option>
                         <option value='spAttack'>Special Attack</option>
                         <option value='spDefense'>Special Defense</option>
-
                     </select>
                 </label>
                 {pokemon}

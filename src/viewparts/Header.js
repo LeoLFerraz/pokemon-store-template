@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import "../assets/styles/viewparts/Header.scss";
 import { DefaultCarousel } from "../components/DefaultCarousel";
 import { InfoCircle, ExclamationCircle } from "react-bootstrap-icons";
@@ -13,6 +14,14 @@ import { OPEN_CART } from "../redux/actionTypes";
 import underConstruction from "../assets/utils/under-construction";
 
 function RenderHeader(props) {
+    let history = useHistory();
+    const [searchParam, setSearchParam] = useState('');
+
+    function searchPokemon(e) {
+        e.preventDefault();
+        history.push("/catalog?name=" + searchParam);
+    }
+
     return (
             <header className="header">
                 <div id="header-tipbar">
@@ -29,13 +38,13 @@ function RenderHeader(props) {
                                 <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
                             </Navbar.Brand>
 
-                            <Form inline className="col-7">
-                                <FormControl type="text" placeholder="Search Pokemon" className="w-100" />
-                                <Search className="search-icon"/>
+                            <Form inline className="col-7" onSubmit={(e) => {searchPokemon(e)}}>
+                                <FormControl type="text" placeholder="Search Pokemon" className="w-100" onChange={(e) => {setSearchParam(e.target.value)}} />
+                                <Search className="search-icon" onClick={(e) => {searchPokemon(e)}}/>
                             </Form>
                             <div className="col-3 header-control-nav">
                                 <div className="user-module-wrapper">
-                                    <PokeUser className="user-module" /> Sign in
+                                    <PokeUser className="user-module" onClick={(e) => {underConstruction(e, "Sorry, no user module yet! It's a very time consuming feature :(")}}/> Sign in
                                 </div>
                                 <div className="minicart-icon-wrapper" data-quantity={props.quantity} onClick={() => {props.dispatch({type: OPEN_CART})}}>
                                     <Cart className="minicart-icon" />
@@ -50,10 +59,10 @@ function RenderHeader(props) {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} to="/">All Pokemon</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link as={Link} to="/" onClick={(e) => {underConstruction(e)}}>PokeWarranty Policies</Nav.Link>
-                            <Nav.Link as={Link} to="/catalog">Imported Pokemon</Nav.Link>
+                            <Nav.Link as={Link} to="/" onClick={(e) => {underConstruction(e, "A landing-page/institutional-page template wasn't on my top-priorities list!")}}>PokeWarranty Policies</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog?seller=digiStore">Imported Pokemon</Nav.Link>
                             <Nav.Link as={Link} to="/catalog">Highest Discount Pokemon</Nav.Link>
-                            <Nav.Link as={Link} to="/catalog?orderBy=">Lowest Prices</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog">Lowest Prices</Nav.Link>
                         </Nav>
                     </nav>
                 </div>

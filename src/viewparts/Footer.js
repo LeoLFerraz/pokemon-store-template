@@ -11,6 +11,7 @@ import {ReactComponent as Facebook} from "../assets/svg/Facebook.svg";
 import {ReactComponent as Twitter} from "../assets/svg/Twitter.svg";
 import {ReactComponent as Instagram} from "../assets/svg/Instagram.svg";
 import {Form, FormControl, Button} from "react-bootstrap";
+import underConstruction from "../assets/utils/under-construction";
 
 //TODO: Newsletter onclick.
 
@@ -30,7 +31,7 @@ export function Footer(props) {
                             <Form inline className="col-6 d-flex justify-content-center align-items-center flex-nowrap">
                                 <FormControl type="text" placeholder="Name" className="mr-2" />
                                 <FormControl type="text" placeholder="Email" className="mr-2" />
-                                <Button type="button">Submit</Button>
+                                <Button type="button" onClick={(e) => {underConstruction(e)}}>Submit</Button>
                             </Form>
                         </div>
                     </div>
