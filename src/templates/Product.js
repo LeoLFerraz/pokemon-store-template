@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { ADD_TO_CART } from "../redux/actionTypes";
+import {ADD_TO_CART, OPEN_CART} from "../redux/actionTypes";
 
 
 function ProductComponent(props) {
@@ -27,7 +27,7 @@ function ProductComponent(props) {
             <br />
             Price: {props.pokemon.price}
             <br />
-            {props.pokemon.price === props.pokemon.discount ? '' : `New Price: ${props.pokemon.discount}`}
+            {props.pokemon.price === props.pokemon.discountedPrice ? '' : `New Price: ${props.pokemon.discountedPrice}`}
             <br />
             {props.pokemon.generation}
             <br />
@@ -49,7 +49,7 @@ function ProductComponent(props) {
             <br />
             {types}
             <br />
-            <button onClick={() => props.dispatch({type: ADD_TO_CART, payload: props.pokemon.id})}>Add to cart</button>
+            <button onClick={() => addToCart(props)}>Add to cart</button>
             {evolutions}
         </div>
     }
@@ -58,6 +58,11 @@ function ProductComponent(props) {
             {pokeInfo}
         </main>
     )
+}
+
+const addToCart = (props) => {
+    props.dispatch({type: ADD_TO_CART, payload: {id: props.pokemon.id}});
+    props.dispatch({type: OPEN_CART, payload: {}});
 }
 
 const mapStateToProps = (state, ownProps) => {
