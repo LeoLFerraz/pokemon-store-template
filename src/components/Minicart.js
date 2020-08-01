@@ -66,7 +66,7 @@ const MinicartComponent = (props) => {
                             Total
                         </td>
                         <td>
-                            $$$Total
+                            {props.subTotal.toFixed(2)}
                         </td>
                     </tr>
                     </tbody>
@@ -103,6 +103,9 @@ const mapStateToProps = (state) => {
     return {
         products: state.cart.products,
         quantity: state.cart.quantity,
+        subTotal: state.cart.subTotal,
+        total: state.cart.total,
+        shippingCost: state.cart.shippingAddress,
         open: state.cart.open,
         pokemon: state.pokemonData.pokemon
     };

@@ -1,10 +1,13 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, OPEN_CART, CLOSE_CART, TOGGLE_CART } from "../actionTypes";
+import {ADD_TO_CART, REMOVE_FROM_CART, OPEN_CART, CLOSE_CART, TOGGLE_CART, SET_SHIPPING_COST} from "../actionTypes";
 
 
 const initialState = JSON.parse(localStorage.getItem("cart")) || {
     products: [],
     quantity: 0,
-    open: false
+    open: false,
+    shippingCost: 0,
+    subTotal: 0,
+    total: 0,
 };
 
 function recalculateQuantity(products) {
@@ -13,6 +16,20 @@ function recalculateQuantity(products) {
         count += product.quantity;
     }
     return count;
+}
+
+function recalculateSubTotal(products) {
+    let subTotal = 0;
+    for(let product of products) {
+        subTotal += product.price * product.quantity;
+    }
+    return subTotal;
+}
+
+function recalculateTotal(state) {
+    let total = 0;
+    total += recalculateSubTotal(state.products) + state.shippingCost;
+    return total;
 }
 
 export default function(state = initialState, action) {
@@ -28,7 +45,7 @@ export default function(state = initialState, action) {
             let index = products.findIndex(item =>{
                 return item.id === id;
             });
-            if(index >= 0){
+            if(index >= 0) {
                 if(set) {
                     products[index].quantity = quantity;
                 } else {
@@ -36,13 +53,16 @@ export default function(state = initialState, action) {
                         products[index].quantity += quantity;
                     }
                 }
-            }else{
-                products.push({id, quantity});
+            } else {
+                let price = action.payload.price;
+                products.push({id, quantity, price});
             }
             let newState = {
                 ...state,
                 products,
-                quantity: recalculateQuantity(products)
+                quantity: recalculateQuantity(products),
+                subTotal: recalculateSubTotal(products),
+                total: recalculateTotal(state)
             };
 
             localStorage.setItem("cart", JSON.stringify(newState));
@@ -54,14 +74,14 @@ export default function(state = initialState, action) {
             let cartIndex = state.products.findIndex((product) => {
                 return product.id === id;
             });
-            console.log("pokeID: ", id);
-            console.log("index: ", cartIndex);
             let productsCopy = state.products;
-            console.log(productsCopy.splice(cartIndex, 1))
+            productsCopy.splice(cartIndex, 1);
             let newState = {
                 ...state,
                 products: productsCopy,
-                quantity : recalculateQuantity(state.products)
+                quantity: recalculateQuantity(state.products),
+                subTotal: recalculateSubTotal(state.products),
+                total: recalculateTotal(state)
             };
 
             localStorage.setItem("cart", JSON.stringify(newState));
@@ -77,6 +97,7 @@ export default function(state = initialState, action) {
             localStorage.setItem("cart", JSON.stringify(newState));
             return newState;
         }
+
         case CLOSE_CART: {
             let newState = {
                 ...state,
@@ -86,6 +107,7 @@ export default function(state = initialState, action) {
             localStorage.setItem("cart", JSON.stringify(newState));
             return newState;
         }
+
         case TOGGLE_CART: {
             let newState = {
                 ...state,
@@ -94,6 +116,17 @@ export default function(state = initialState, action) {
 
             localStorage.setItem("cart", JSON.stringify(newState));
             return newState;
+        }
+
+        case SET_SHIPPING_COST: {
+            let newState = {
+                ...state,
+                shippingCost: action.payload.shippingCost,
+                total: recalculateTotal(state)
+            }
+
+            localStorage.setItem("cart", JSON.stringify(newState));
+            return newState
         }
         default:
             return state;

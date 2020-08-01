@@ -61,7 +61,7 @@ function ProductComponent(props) {
 }
 
 const addToCart = (props) => {
-    props.dispatch({type: ADD_TO_CART, payload: {id: props.pokemon.id}});
+    props.dispatch({type: ADD_TO_CART, payload: {id: props.pokemon.id, price: props.pokemon.discountedPrice}});
     props.dispatch({type: OPEN_CART, payload: {}});
 }
 
