@@ -43,8 +43,8 @@ function RenderHeader(props) {
                                 <Search className="search-icon" onClick={(e) => {searchPokemon(e)}}/>
                             </Form>
                             <div className="col-3 header-control-nav">
-                                <div className="user-module-wrapper">
-                                    <PokeUser className="user-module" onClick={(e) => {underConstruction(e, "Sorry, no user module yet! It's a very time consuming feature :(")}}/> Sign in
+                                <div className="user-module-wrapper" onClick={(e) => {underConstruction(e, "Sorry, no user module yet! It's a very time consuming feature :(")}}>
+                                    <PokeUser className="user-module"/> Sign in
                                 </div>
                                 <div className="minicart-icon-wrapper" data-quantity={props.quantity} onClick={() => {props.dispatch({type: OPEN_CART})}}>
                                     <Cart className="minicart-icon" />
@@ -55,16 +55,16 @@ function RenderHeader(props) {
                             <NavDropdown title="Departments" className="departments-dropdown">
                                 {props.types.map((value, index) => {
                                     if(value !== "fire") {
-                                        return <NavDropdown.Item className="department-link" key={'type' + index} as={Link} to={"/catalog" + value}>{value}</NavDropdown.Item>
+                                        return <NavDropdown.Item className="department-link" key={'type' + index} as={Link} to={"/catalog?types=" + value}>{value}</NavDropdown.Item>
                                     }
                                 })}
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={Link} to="/">All Pokemon</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/catalog">All Pokemon</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link as={Link} to="/" onClick={(e) => {underConstruction(e, "A landing-page/institutional-page template wasn't on my top-priorities list!")}}>PokeWarranty Policies</Nav.Link>
                             <Nav.Link as={Link} to="/catalog?seller=digiStore">Imported Pokemon</Nav.Link>
-                            <Nav.Link as={Link} to="/catalog">Highest Discount Pokemon</Nav.Link>
-                            <Nav.Link as={Link} to="/catalog">Lowest Prices</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog?orderBy=discount">Highest Discount Pokemon</Nav.Link>
+                            <Nav.Link as={Link} to="/catalog?orderBy=priceAsc">Lowest Prices</Nav.Link>
                         </Nav>
                     </nav>
                 </div>

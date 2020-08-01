@@ -38,8 +38,8 @@ class Pokemon {
             evolves_to.species.name.
          */
         this.types = pokemon.types || ["Undefined Type"];
-        this.sprite = pokemon.sprite || "undefinedpokemon.png";
-        this.spriteShiny = pokemon.spriteShiny || "undefinedpokemon.png";
+        this.sprite = pokemon.sprite || require("../assets/media/undefinedpokemon.png");
+        this.spriteShiny = pokemon.spriteShiny || require("../assets/media/undefinedpokemon.png");
         this.sprites = pokemon.sprites || [];
         this.price = (Math.random()*100).toFixed(2);
         if (Math.random() > .5){
