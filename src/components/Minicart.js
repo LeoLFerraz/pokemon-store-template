@@ -3,6 +3,9 @@ import "../assets/styles/components/Minicart.scss";
 import { connect } from "react-redux";
 import {ADD_TO_CART, CLOSE_CART, REMOVE_FROM_CART} from "../redux/actionTypes";
 import { Cart, X, Plus, Dash } from "react-bootstrap-icons";
+import {Button, FormControl} from "react-bootstrap";
+import underConstruction from "../assets/utils/under-construction";
+import {Link} from "react-router-dom";
 
 const MinicartComponent = (props) => {
     function updateQtyViaInput(evt, pokemonId) {
@@ -61,12 +64,33 @@ const MinicartComponent = (props) => {
                     </thead>
                     <tbody>
                     {items}
-                    <tr>
-                        <td>
-                            Total
+                    <tr className="cart-subtotal-row">
+                        <td className="cart-subtotal" colSpan="2">
+                            Subtotal
                         </td>
-                        <td>
-                            {props.subTotal.toFixed(2)}
+                        <td className="cart-subtotal-value">
+                            ${props.subTotal.toFixed(2)}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr className="cart-shipping-row">
+                        <td className="cart-shipping-text">
+                            Calculate Shipping Cost
+                        </td>
+                        <td className="cart-shipping-input" colSpan="2">
+                            <FormControl type="text" placeholder="Postal Code" className="shipping-input" />
+                        </td>
+                        <td className="cart-shipping-submit">
+                            <Button className="cart-shipping-button" type="button" onClick={(e) => {underConstruction(e, "Sorry, you can only calculate your shipping cost on checkout right now!")}}>OK</Button>
+                        </td>
+                    </tr>
+                    <tr className="cart-checkout-row">
+                        <td className="cart-total-text">
+                            <span className="total-text">Total: </span>
+                            <span className="total-value">${props.total.toFixed(2)}</span>
+                        </td>
+                        <td className="cart-checkout" colSpan="3">
+                            <Link to="/checkout"><Button className="cart-checkout-button" type="button">Proceed to Checkout</Button></Link>
                         </td>
                     </tr>
                     </tbody>

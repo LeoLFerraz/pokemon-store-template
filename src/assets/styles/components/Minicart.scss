@@ -72,6 +72,23 @@
         color: $primary-color-pastel;
         font-weight: 500;
     }
+    .cart-subtotal-row, .cart-shipping-row {
+        border-bottom: 1px solid $primary-color-pastel;
+    }
+    .cart-subtotal, .cart-subtotal-value, .cart-shipping-text {
+        padding-top: 10px;
+        padding-left: 10px;
+        font-weight: 600;
+        padding-bottom: 10px;
+    }
+    .shipping-input, .cart-shipping-button {
+        margin: 10px 0;
+        font-size: 0.7rem;
+    }
+    .shipping-input {
+        width: 50%;
+        margin-left: auto;
+    }
     .minicart-table-product {
         border-top: 1px solid $primary-color-pastel;
         border-bottom: 1px solid $primary-color-pastel;
@@ -125,6 +142,11 @@
             }
         }
     }
+    .cart-checkout-row {
+        td {
+            padding-top: 20px;
+        }
+    }
     .minicart-header {
         display: flex;
         align-items: baseline;
@@ -161,6 +183,38 @@
             top: 10px;
             border: 1px solid $font-secondary-color;
             border-radius: 50%;
+        }
+    }
+    .cart-shipping-button, .cart-checkout-button {
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+        &:focus, &:active, &:hover {
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+            box-shadow: 0 0 5px $secondary-color;
+        }
+    }
+    .cart-total-text {
+        font-weight: 600;
+        padding-left: 10px;
+        color: $primary-color-pastel;
+        font-size: 1.2rem;
+    }
+    .cart-checkout {
+        text-align: right;
+    }
+    .cart-checkout-button {
+        width: 100%;
+        padding: 20px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background-color: $primary-color-pastel;
+        border-color: $primary-color-pastel;
+        &:focus, &:active, &:hover {
+            background-color: $primary-color-pastel;
+            border-color: $primary-color-pastel;
+            box-shadow: 0 0 5px $primary-color-pastel;
         }
     }
 }

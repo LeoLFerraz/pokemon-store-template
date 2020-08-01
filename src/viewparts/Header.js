@@ -10,17 +10,7 @@ import { ReactComponent as Search } from "../assets/svg/Search.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { OPEN_CART } from "../redux/actionTypes";
-import Swal from 'sweetalert2';
-
-function underConstruction(e) {
-    e.preventDefault();
-    Swal.fire({
-        title: 'Under Construction!',
-        text: 'Sorry, this feature is not available at this time.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-    })
-}
+import underConstruction from "../assets/utils/under-construction";
 
 function RenderHeader(props) {
     return (
