@@ -40,63 +40,74 @@ export function Catalog(props) {
     });
 
     return (
-            <main>
-                <label>
-                    Name:
-                    <input type='text' value={name} onChange={(e) => setName(e.target.value)}/>
-                </label>
-                <label>
-                    Generation:
-                    <select value={generations} onChange={(e) => setGenerations(Array.from(e.target.selectedOptions, (item) => item.value))} multiple={true}>
-                        {generationsOption}
-                    </select>
-                </label>
-                <button onClick={() => setGenerations([])}>Clear Selection</button>
-                <label>
-                    Type
-                    <select value={types} onChange={(e) => setTypes(Array.from(e.target.selectedOptions, (item) => item.value))} multiple={true}>
-                        {typesOption}>
-                    </select>
-                </label>
-                <button onClick={() => setTypes([])}>Clear Selection</button>
-                <label>
-                    Defense:
-                    <input value={defense} onChange={(e) => setDefense(e.target.value)} type='text'/>
-                </label>
-                <label>
-                    Attack:
-                    <input value={attack} onChange={(e) => setAttack(e.target.value)} type='text'/>
-                </label>
-                <label>
-                    Hp:
-                    <input value={hp} onChange={(e) => setHp(e.target.value)} type='text'/>
-                </label>
-                <label>
-                    Speed:
-                    <input value={speed} onChange={(e) => setSpeed(e.target.value)} type='text'/>
-                </label>
-                <label>
-                    Special Attack:
-                    <input value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='text'/>
-                </label>
-                <label>
-                    Special Defense:
-                    <input value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
-                </label>
-                <label>
-                    Order By:
-                    <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-                        <option value='id'>Id</option>
-                        <option value='name'>Name</option>
-                        <option value='attack'>Attack</option>
-                        <option value='defense'>Defense</option>
-                        <option value='hp'>HP</option>
-                        <option value='speed'>Speed</option>
-                        <option value='spAttack'>Special Attack</option>
-                        <option value='spDefense'>Special Defense</option>
-                    </select>
-                </label>
-                {pokemon}
+            <main className="container">
+                <div className="row">
+                    <div className="col-12">
+                        Catalog Header
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-3 catalog-filters">
+                        <label>
+                            Name:
+                            <input type='text' value={name} onChange={(e) => setName(e.target.value)}/>
+                        </label>
+                        <label>
+                            Generation:
+                            <select value={generations} onChange={(e) => setGenerations(Array.from(e.target.selectedOptions, (item) => item.value))} multiple={true}>
+                                {generationsOption}
+                            </select>
+                        </label>
+                        <button onClick={() => setGenerations([])}>Clear Selection</button>
+                        <label>
+                            Type
+                            <select value={types} onChange={(e) => setTypes(Array.from(e.target.selectedOptions, (item) => item.value))} multiple={true}>
+                                {typesOption}>
+                            </select>
+                        </label>
+                        <button onClick={() => setTypes([])}>Clear Selection</button>
+                        <label>
+                            Defense:
+                            <input value={defense} onChange={(e) => setDefense(e.target.value)} type='text'/>
+                        </label>
+                        <label>
+                            Attack:
+                            <input value={attack} onChange={(e) => setAttack(e.target.value)} type='text'/>
+                        </label>
+                        <label>
+                            Hp:
+                            <input value={hp} onChange={(e) => setHp(e.target.value)} type='text'/>
+                        </label>
+                        <label>
+                            Speed:
+                            <input value={speed} onChange={(e) => setSpeed(e.target.value)} type='text'/>
+                        </label>
+                        <label>
+                            Special Attack:
+                            <input value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='text'/>
+                        </label>
+                        <label>
+                            Special Defense:
+                            <input value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
+                        </label>
+                        <label>
+                            Order By:
+                            <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+                                <option value='id'>Id</option>
+                                <option value='name'>Name</option>
+                                <option value='attack'>Attack</option>
+                                <option value='defense'>Defense</option>
+                                <option value='hp'>HP</option>
+                                <option value='speed'>Speed</option>
+                                <option value='spAttack'>Special Attack</option>
+                                <option value='spDefense'>Special Defense</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div className="col-9 catalog-results">
+                        {pokemon}
+                    </div>
+                </div>
             </main>
     )
 }
