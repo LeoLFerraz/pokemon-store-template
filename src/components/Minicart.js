@@ -48,6 +48,40 @@ const MinicartComponent = (props) => {
         }
     });
 
+    let productTable = () => {
+        return (
+                <table className="minicart-table">
+                    <thead>
+                    <tr>
+                        <td className="table-head-product" style={{width: "50%"}}>Product</td>
+                        <td className="table-head-quantity">Quantity</td>
+                        <td className="table-head-price">Price</td>
+                        <td className="table-head-close"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {items}
+                    <tr>
+                        <td>
+                            Total
+                        </td>
+                        <td>
+                            $$$Total
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        )
+    }
+
+    function renderNoProducts() {
+        return (
+            <div className="empty-cart-message">
+                Your cart is empty! :(
+            </div>
+        )
+    }
+
     return (
             <div>
                 <div className={`minicart${props.open ? ' open' : ''}`}>
@@ -57,27 +91,7 @@ const MinicartComponent = (props) => {
                         <span className="minicart-header-itemsCount">{props.quantity} items</span>
                         <X className="minicart-header-close" onClick={() => {props.dispatch({type: CLOSE_CART})}} />
                     </div>
-                    <table className="minicart-table">
-                        <thead>
-                        <tr>
-                            <td className="table-head-product" style={{width: "50%"}}>Product</td>
-                            <td className="table-head-quantity">Quantity</td>
-                            <td className="table-head-price">Price</td>
-                            <td className="table-head-close"></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {items}
-                            <tr>
-                                <td>
-                                    Total
-                                </td>
-                                <td>
-                                    $$$Total
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {items.length ? productTable() : renderNoProducts()}
                 </div>
                 <div className={`minicart-overlay${props.open ? ' open' : ''}`} onClick={() => {props.dispatch({type: CLOSE_CART})}}>
                 </div>

@@ -19,3 +19,22 @@ html {
     min-height: 100vh;
     padding-bottom: 236px;
 }
+
+// SweetAlert2 overrides:
+.swal2-icon {
+    border-color: $primary-color-pastel !important;
+    .swal2-x-mark {
+        border-color: $primary-color-pastel !important;
+    }
+    span:not(.swal2-x-mark) {
+        background-color: $primary-color-pastel !important;
+    }
+}
+
+.swal2-confirm {
+    background-color: $secondary-color;
+}
+
+.swal2-content, .swal2-title {
+    color: $font-secondary-color;
+}

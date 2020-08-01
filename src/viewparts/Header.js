@@ -10,7 +10,17 @@ import { ReactComponent as Search } from "../assets/svg/Search.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { OPEN_CART } from "../redux/actionTypes";
+import Swal from 'sweetalert2';
 
+function underConstruction(e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Under Construction!',
+        text: 'Sorry, this feature is not available at this time.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+    })
+}
 
 function RenderHeader(props) {
     return (
@@ -50,7 +60,7 @@ function RenderHeader(props) {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} to="/">All Pokemon</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link as={Link} to="/">PokeWarranty Policies</Nav.Link>
+                            <Nav.Link as={Link} to="/" onClick={(e) => {underConstruction(e)}}>PokeWarranty Policies</Nav.Link>
                             <Nav.Link as={Link} to="/catalog">Imported Pokemon</Nav.Link>
                             <Nav.Link as={Link} to="/catalog">Highest Discount Pokemon</Nav.Link>
                             <Nav.Link as={Link} to="/catalog?orderBy=">Lowest Prices</Nav.Link>
