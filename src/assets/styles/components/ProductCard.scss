@@ -1,8 +1,15 @@
 @import "../variables";
 
 .productCard {
-    display: inline-block;
     position: relative;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &:hover {
+        border-radius: 2px;
+        box-shadow: 0 0 1.5rem rgba(0,0,0,0.14);;
+    }
     .buy-button {
         display: block;
         margin: 10px auto 30px auto;

@@ -30,6 +30,9 @@ export function Catalog(props) {
         }
     });
     let typesOption = pokeData.types.map(type => {
+        if(type === 'fire') {
+            return {};
+        }
         return {
             value: type,
             label: type
@@ -98,7 +101,6 @@ export function Catalog(props) {
                 <div className="col-3 catalog-orderBy">
                     <label>
                         Order By:
-                        {console.log(orderBy)}
                         <Select defaultValue={orderByOptions.find((item) => { return item.value == orderBy}) || orderByOptions[0]} onChange={(e) => setOrderBy(e.value)} options={orderByOptions} />
                     </label>
                 </div>
@@ -111,38 +113,38 @@ export function Catalog(props) {
                     </label>
                     <label>
                         Generation
-                        <Select defaultValue={orderByOptions.find((item) => { return item.value == orderBy}) || orderByOptions[0]}  onChange={(e) => e ? setGenerations(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={generationsOption} value={generations}/>
+                        <Select defaultValue={generationsOption.find((item) => { return item.value == generations}) || generationsOption[0]}  onChange={(e) => e !== null ? setGenerations(e.map((item) => {return item.value})) : setGenerations([])} isMulti className="catalog-select" options={generationsOption}/>
                     </label>
                     <label>
                         Type
-                        <Select onChange={(e) => e ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption} value={types}/>
+                        <Select defaultValue={typesOption.find((item) => { return item.value == types}) || typesOption[0]} onChange={(e) => e !== null ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption}/>
                     </label>
                     <label>
-                        Defense:
+                        Defense
                         <FormControl value={defense} onChange={(e) => setDefense(e.target.value)} type='text'/>
                     </label>
                     <label>
-                        Attack:
+                        Attack
                         <FormControl value={attack} onChange={(e) => setAttack(e.target.value)} type='text'/>
                     </label>
                     <label>
-                        Hp:
+                        Hp
                         <FormControl value={hp} onChange={(e) => setHp(e.target.value)} type='text'/>
                     </label>
                     <label>
-                        Speed:
+                        Speed
                         <FormControl value={speed} onChange={(e) => setSpeed(e.target.value)} type='text'/>
                     </label>
                     <label>
-                        Special Attack:
+                        Special Attack
                         <FormControl value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='text'/>
                     </label>
                     <label>
-                        Special Defense:
+                        Special Defense
                         <FormControl value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
                     </label>
                 </div>
-                <div className="col-9">
+                <div className="col-9 catalog-results">
                     {pokemon}
                 </div>
             </div>

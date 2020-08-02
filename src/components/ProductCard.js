@@ -35,7 +35,7 @@ export const ProductCardComponent = (props) => {
                 <DefaultBuyButton className="buy-button" pokemon={props.pokemon}>Add to Cart</DefaultBuyButton>
             </div>
     )
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
     let comparing = state.pokemonCompare.comparing.some((id) => {

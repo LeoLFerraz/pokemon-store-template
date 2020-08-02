@@ -1,4 +1,4 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, OPEN_CART, CLOSE_CART, TOGGLE_CART, SET_SHIPPING_COST} from "../actionTypes";
+import {ADD_TO_CART, REMOVE_FROM_CART, OPEN_CART, CLOSE_CART, TOGGLE_CART, SET_SHIPPING_ADDRESS} from "../actionTypes";
 
 
 const initialState = JSON.parse(localStorage.getItem("cart")) || {
@@ -6,6 +6,7 @@ const initialState = JSON.parse(localStorage.getItem("cart")) || {
     quantity: 0,
     open: false,
     shippingCost: 0,
+    shippingAddress: '',
     subTotal: 0,
     total: 0,
 };
@@ -118,12 +119,13 @@ export default function(state = initialState, action) {
             return newState;
         }
 
-        case SET_SHIPPING_COST: {
+        case SET_SHIPPING_ADDRESS: {
             let newState = {
                 ...state,
-                shippingCost: action.payload.shippingCost,
-                total: recalculateTotal(state)
+                shippingAddress: action.payload.shippingAddress,
+                shippingCost: Number((Math.random()*100).toFixed(2)),
             }
+            newState.total = recalculateTotal(newState);
 
             localStorage.setItem("cart", JSON.stringify(newState));
             return newState

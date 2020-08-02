@@ -12,4 +12,14 @@
     .catalog-select {
         text-transform: capitalize;
     }
+    .catalog-results {
+        display: flex;
+        align-items: stretch;
+        align-content: stretch;
+        flex-wrap: wrap;
+        .productCard {
+            margin: 10px 15px;
+            max-height: 400px;
+        }
+    }
 }
