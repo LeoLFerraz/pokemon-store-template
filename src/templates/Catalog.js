@@ -89,6 +89,16 @@ export function Catalog(props) {
         },
 
     ]
+    let sellerOptions = [
+        {
+            value: 'pokeStore',
+            label: 'PokeStore'
+        },
+        {
+            value: 'digiStore',
+            label: 'DigiStore'
+        }
+    ]
 
 
     return (
@@ -141,6 +151,10 @@ export function Catalog(props) {
                     <label>
                         Special Defense
                         <FormControl value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
+                    </label>
+                    <label>
+                        Seller
+                        <Select defaultValue={sellerOptions.find((item) => { return item.value == seller}) || []} onChange={(e) => e !== null ? setSeller(e.value) : setSeller([])} className="catalog-select" options={sellerOptions}/>
                     </label>
                 </div>
                 <div className="col-9 catalog-results">
