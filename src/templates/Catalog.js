@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import CatalogModel from "../models/Catalog";
 import { ProductCard } from "../components/ProductCard";
 import { useSelector } from 'react-redux';
+import Select from "react-select";
+import { FormControl } from "react-bootstrap";
+import '../assets/styles/templates/Catalog.scss';
 
 export function Catalog(props) {
     let query = new URLSearchParams(props.query);
@@ -21,87 +24,122 @@ export function Catalog(props) {
     let cat = new CatalogModel({name: name, types: types, generations: generations, stats:{attack, defense, hp, speed, spAttack, spDefense}, orderBy: orderBy, seller: seller}, pokeData.pokemon);
 
     let generationsOption = pokeData.generations.map(generation => {
-        return (
-                <option value={generation}>{generation}</option>
-        )
+        return {
+            value: generation,
+            label: generation.split("-")[1].toUpperCase()
+        }
     });
     let typesOption = pokeData.types.map(type => {
-        return (
-                <option value={type}>{type}</option>
-        )
+        return {
+            value: type,
+            label: type
+        }
     });
     let pokemon = cat.catalog.map(item =>{
         return (
             <ProductCard pokemon={item}/>
         )
     });
+    let orderByOptions = [
+        {
+            value: "id",
+            label: "Pokedex"
+        },
+        {
+            value: "name",
+            label: "Name"
+        },
+        {
+            value: "priceAsc",
+            label: "Cheapest"
+        },
+        {
+            value: "discount",
+            label: "Biggest Discount"
+        },
+        {
+            value: "hp",
+            label: "Health Points"
+        },
+        {
+            value: "attack",
+            label: "Attack"
+        },
+        {
+            value: "spAttack",
+            label: "Sp. Attack"
+        },
+        {
+            value: "defense",
+            label: "Defense"
+        },
+        {
+            value: "spDefense",
+            label: "Sp. Defense"
+        },
+        {
+            value: "speed",
+            label: "Speed"
+        },
+        {
+            value: "priceDesc",
+            label: "Most Expensive"
+        },
+
+    ]
+
 
     return (
-        <main className="container">
-            <div className="row">
-                <div className="col-12">
+        <main className="container catalog">
+            <div className="row catalog-header">
+                <div className="col-9 catalog-title">
                     Catalog
+                </div>
+                <div className="col-3 catalog-orderBy">
+                    <label>
+                        Order By:
+                        {console.log(orderBy)}
+                        <Select defaultValue={orderByOptions.find((item) => { return item.value == orderBy}) || orderByOptions[0]} onChange={(e) => setOrderBy(e.value)} options={orderByOptions} />
+                    </label>
                 </div>
             </div>
             <div className="row">
                 <div className="col-3">
                     <label>
-                        Name:
-                        <input type='text' value={name} onChange={(e) => setName(e.target.value)}/>
+                        Name
+                        <FormControl type='text' value={name} onChange={(e) => setName(e.target.value)}/>
                     </label>
                     <label>
-                        Generation:
-                        <select value={generations} onChange={(e) => setGenerations(Array.from(e.target.selectedOptions, (item) => item.value))} multiple={true}>
-                            {generationsOption}
-                        </select>
+                        Generation
+                        <Select defaultValue={orderByOptions.find((item) => { return item.value == orderBy}) || orderByOptions[0]}  onChange={(e) => e ? setGenerations(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={generationsOption} value={generations}/>
                     </label>
-                    <button onClick={() => setGenerations([])}>Clear Selection</button>
                     <label>
                         Type
-                        <select value={types} onChange={(e) => setTypes(Array.from(e.target.selectedOptions, (item) => item.value))} multiple={true}>
-                            {typesOption}>
-                        </select>
+                        <Select onChange={(e) => e ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption} value={types}/>
                     </label>
-                    <button onClick={() => setTypes([])}>Clear Selection</button>
                     <label>
                         Defense:
-                        <input value={defense} onChange={(e) => setDefense(e.target.value)} type='text'/>
+                        <FormControl value={defense} onChange={(e) => setDefense(e.target.value)} type='text'/>
                     </label>
                     <label>
                         Attack:
-                        <input value={attack} onChange={(e) => setAttack(e.target.value)} type='text'/>
+                        <FormControl value={attack} onChange={(e) => setAttack(e.target.value)} type='text'/>
                     </label>
                     <label>
                         Hp:
-                        <input value={hp} onChange={(e) => setHp(e.target.value)} type='text'/>
+                        <FormControl value={hp} onChange={(e) => setHp(e.target.value)} type='text'/>
                     </label>
                     <label>
                         Speed:
-                        <input value={speed} onChange={(e) => setSpeed(e.target.value)} type='text'/>
+                        <FormControl value={speed} onChange={(e) => setSpeed(e.target.value)} type='text'/>
                     </label>
                     <label>
                         Special Attack:
-                        <input value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='text'/>
+                        <FormControl value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='text'/>
                     </label>
                     <label>
                         Special Defense:
-                        <input value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
-                    </label>
-                    <label>
-                        Order By:
-                        <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-                            <option value='id'>Id</option>
-                            <option value='name'>Name</option>
-                            <option value='attack'>Attack</option>
-                            <option value='defense'>Defense</option>
-                            <option value='hp'>HP</option>
-                            <option value='speed'>Speed</option>
-                            <option value='spAttack'>Special Attack</option>
-                            <option value='spDefense'>Special Defense</option>
-                            <option value='priceAsc'>Price Ascending</option>
-                            <option value='priceDesc'>Price Descending</option>
-                            <option value="discount">Discount</option>
-                        </select>
+                        <FormControl value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
                     </label>
                 </div>
                 <div className="col-9">

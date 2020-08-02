@@ -54,22 +54,22 @@ class Catalog {
                 this.catalog.sort((a, b) => (a.name > b.name) ? 1 : -1);
                 break;
             case 'hp':
-                this.catalog.sort((a, b) => (a.stats.hp > b.stats.hp) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.stats.hp < b.stats.hp) ? 1 : -1);
                 break;
             case 'attack':
-                this.catalog.sort((a, b) => (a.stats.attack > b.stats.attack) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.stats.attack < b.stats.attack) ? 1 : -1);
                 break;
             case 'defense':
-                this.catalog.sort((a, b) => (a.stats.defense > b.stats.defense) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.stats.defense < b.stats.defense) ? 1 : -1);
                 break;
             case 'speed':
-                this.catalog.sort((a, b) => (a.stats.speed > b.stats.speed) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.stats.speed < b.stats.speed) ? 1 : -1);
                 break;
             case 'spAttack':
-                this.catalog.sort((a, b) => (a.stats['special-attack'] > b.stats['special-attack']) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.stats['special-attack'] < b.stats['special-attack']) ? 1 : -1);
                 break;
             case 'spDefense':
-                this.catalog.sort((a, b) => (a.stats['special-defense'] > b.stats['special-defense']) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.stats['special-defense'] < b.stats['special-defense']) ? 1 : -1);
                 break;
             case 'priceAsc' :
                 this.catalog.sort((a, b) => (a.discountedPrice > b.discountedPrice) ? 1 : -1);
