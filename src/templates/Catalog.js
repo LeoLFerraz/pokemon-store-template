@@ -30,13 +30,12 @@ export function Catalog(props) {
         }
     });
     let typesOption = pokeData.types.map(type => {
-        if(type === 'fire') {
-            return {};
-        }
         return {
             value: type,
             label: type
         }
+    }).filter(type => {
+        return type.value !== 'fire';
     });
     let pokemon = cat.catalog.map(item =>{
         return (
@@ -113,11 +112,11 @@ export function Catalog(props) {
                     </label>
                     <label>
                         Generation
-                        <Select defaultValue={generationsOption.find((item) => { return item.value == generations}) || generationsOption[0]}  onChange={(e) => e !== null ? setGenerations(e.map((item) => {return item.value})) : setGenerations([])} isMulti className="catalog-select" options={generationsOption}/>
+                        <Select defaultValue={generationsOption.find((item) => { return item.value == generations}) || []}  onChange={(e) => e !== null ? setGenerations(e.map((item) => {return item.value})) : setGenerations([])} isMulti className="catalog-select" options={generationsOption}/>
                     </label>
                     <label>
                         Type
-                        <Select defaultValue={typesOption.find((item) => { return item.value == types}) || typesOption[0]} onChange={(e) => e !== null ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption}/>
+                        <Select defaultValue={typesOption.find((item) => { return item.value == types}) || []} onChange={(e) => e !== null ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption}/>
                     </label>
                     <label>
                         Defense

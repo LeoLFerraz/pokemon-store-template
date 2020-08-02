@@ -17,7 +17,7 @@ class Catalog {
     constructor(filters, collection) {
         let minId = -Infinity;
         let maxId = Infinity;
-        let name = filters.name;
+        let name = filters.name.toLowerCase();
         let generations = filters.generations;
         let types = filters.types;
         let {attack, defense, hp, spAttack, spDefense, speed} = filters.stats || {};
@@ -51,7 +51,7 @@ class Catalog {
         });
         switch (filters.orderBy) {
             case 'name':
-                this.catalog.sort((a, b) => (a.name > b.name) ? 1 : -1);
+                this.catalog.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1);
                 break;
             case 'hp':
                 this.catalog.sort((a, b) => (Number(a.stats.hp) < Number(b.stats.hp)) ? 1 : -1);
