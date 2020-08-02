@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/styles/components/ProductCard.scss";
 import {ADD_TO_CART, OPEN_CART} from "../redux/actionTypes";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 
 const DefaultBuyButtonRenderer = (props) => {
@@ -10,7 +11,7 @@ const DefaultBuyButtonRenderer = (props) => {
         props.dispatch({type: OPEN_CART, payload: {}});
     }
     return (
-            <button className="buy-button" onClick={() => addToCart(props)}>Add to cart</button>
+            <Button className="buy-button" onClick={() => addToCart(props)}>Add to cart</Button>
     )
 }
 

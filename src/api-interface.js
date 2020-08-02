@@ -88,43 +88,89 @@ export function APIInterface() {
                                             name: 'Agumon',
                                             id: 'd1',
                                             seller: 'digiStore',
-                                            sprite: 'https://smallimg.pngkey.com/png/small/114-1146777_pixel-art-agumon-pixel-art.png',
-                                            types: ['fire'],
+                                            sprite: require('./assets/media/agumon.png'),
+                                            types: ['fire', 'dragon'],
                                             evolutions: [
                                                 {
                                                     name: 'Agumon',
                                                     id: 'd1',
-                                                    sprite: 'https://smallimg.pngkey.com/png/small/114-1146777_pixel-art-agumon-pixel-art.png'
+                                                    sprite: require('./assets/media/agumon.png'),
                                                 }
-                                            ]
+                                            ],
+                                            stats: {
+                                                "hp": 100,
+                                                "attack": 70,
+                                                "defense": 70,
+                                                "special-attack": 20,
+                                                "special-defense": 20,
+                                                "speed": 20
+                                            }
+                                        }));
+                                        pokemonList.push(new Pokemon({
+                                            name: 'Patamon',
+                                            id: 'd4',
+                                            seller: 'digiStore',
+                                            sprite: require('./assets/media/patamon.png'),
+                                            types: ['fire', 'dragon'],
+                                            evolutions: [
+                                                {
+                                                    name: 'Agumon',
+                                                    id: 'd1',
+                                                    sprite: require('./assets/media/patamon.png'),
+                                                }
+                                            ],
+                                            stats: {
+                                                "hp": 100,
+                                                "attack": 70,
+                                                "defense": 70,
+                                                "special-attack": 20,
+                                                "special-defense": 20,
+                                                "speed": 20
+                                            }
                                         }));
                                         pokemonList.push(new Pokemon({
                                             name: 'Gabumon',
                                             id: 'd2',
                                             seller: 'digiStore',
-                                            sprite: 'https://www.spriters-resource.com/resources/sheet_icons/50/53431.png',
-                                            types: ['fire'],
+                                            sprite: require('./assets/media/gabumon.png'),
+                                            types: ['fire', 'ice'],
                                             evolutions: [
                                                 {
                                                     name: 'Gabumon',
                                                     id: 'd2',
-                                                    sprite: 'https://www.spriters-resource.com/resources/sheet_icons/50/53431.png'
+                                                    sprite: require('./assets/media/gabumon.png'),
                                                 }
-                                            ]
+                                            ],
+                                            stats: {
+                                                "hp": 80,
+                                                "attack": 25,
+                                                "defense": 25,
+                                                "special-attack": 50,
+                                                "special-defense": 50,
+                                                "speed": 15
+                                            }
                                         }));
                                         pokemonList.push(new Pokemon({
-                                            name: 'Patamon',
+                                            name: 'Terriermon',
                                             id: 'd3',
                                             seller: 'digiStore',
-                                            sprite: 'https://vignette.wikia.nocookie.net/pokemonwack/images/9/94/2952.png/revision/latest?cb=20200307181312',
-                                            types: ['fire'],
+                                            sprite: require('./assets/media/terriermon.png'),
+                                            types: ['fire', 'flying', 'cyber'],
                                             evolutions: [
                                                 {
-                                                    name: 'Patamon',
+                                                    name: 'Terriermon',
                                                     id: 'd3',
-                                                    sprite: 'https://vignette.wikia.nocookie.net/pokemonwack/images/9/94/2952.png/revision/latest?cb=20200307181312'
+                                                    sprite: require('./assets/media/terriermon.png'),
                                                 }
-                                            ]
+                                            ],
+                                            stats: {
+                                                "hp": 50,
+                                                "attack": 10,
+                                                "defense": 10,
+                                                "special-attack": 10,
+                                                "special-defense": 10,
+                                                "speed": 30
+                                            }
                                         }));
 
                                         json.pokemon.forEach((pokemon) =>{

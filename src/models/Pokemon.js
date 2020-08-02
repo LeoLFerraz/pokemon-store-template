@@ -43,7 +43,7 @@ class Pokemon {
         this.sprites = pokemon.sprites || [];
         this.price = (Math.random()*100).toFixed(2);
         if (Math.random() > .5){
-            this.discountedPrice =  (Math.random() * (this.price-1)).toFixed(2);
+            this.discountedPrice =  (Math.random() * (this.price-.01)).toFixed(2);
         }else {
             this.discountedPrice = this.price;
         }

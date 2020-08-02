@@ -2,7 +2,87 @@
 
 .productCard {
     display: inline-block;
-    margin: 2px;
-    border: solid 1px black;
+    position: relative;
+    .buy-button {
+        display: block;
+        margin: 10px auto 30px auto;
+        visibility: hidden;
+        width: 100%;
+        padding: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background-color: $primary-color-pastel;
+        border-color: $primary-color-pastel;
+        &:focus, &:active, &:hover {
+            background-color: $primary-color-pastel;
+            border-color: $primary-color-pastel;
+            box-shadow: 0 0 5px $primary-color-pastel;
+        }
+    }
+    .compare-button {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: none;
+        border: none;
+        svg {
+            color: $primary-color-pastel;
+            &.disabled {
+                color: gray;
+            }
+        }
+        button {
+            background: none;
+            border: none;
+        }
+    }
+    &:hover {
+        .buy-button {
+            visibility: visible;
+        }
+    }
+    a {
+        text-align: center;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    img {
+        width: auto;
+        height: 230px;
+    }
+    .card-name {
+        font-size: 1rem;
+        color: $primary-color-pastel;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .card-price {
+        position: relative;
+        .best-price {
+            font-size: 1.4rem;
+            color: $secondary-color;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .list-price {
+            text-decoration: line-through;
+            font-size: 0.8rem;
+            color: $font-secondary-color;
+        }
+        .card-discount-percentage {
+            background: $primary-color-pastel;
+            color: $font-primary-color;
+            font-size: 0.6rem;
+            border-bottom-left-radius: 10px;
+            padding: 2px 5px;
+            margin-left: 5px;
+        }
+    }
 }
 

@@ -6,22 +6,31 @@ export default function(state = initialState, action) {
     switch (action.type) {
         case ADD_POKEMON_COMPARE: {
             const { id } = action.payload;
-            let result = {
-                ...state,
-                comparing: [...state.comparing, id],
-            };
-            localStorage.setItem('comparing', JSON.stringify(result));
-            return result
+            const index = state.comparing.indexOf(id);
+            if (index < 0){
+                let comparingCopy = [...state.comparing];
+                comparingCopy.push(id);
+                if(comparingCopy.length > 5){
+                    comparingCopy = state.comparing;
+                }
+                let result = {
+                    ...state,
+                    comparing: comparingCopy,
+                };
+                localStorage.setItem('comparing', JSON.stringify(result));
+                return result;
+            }
+            return state;
         }
         case REMOVE_POKEMON_COMPARE: {
             const { id } = action.payload;
             const index = state.comparing.indexOf(id);
+            let comparingCopy = state.comparing;
+            comparingCopy.splice(index, 1);
+
             let result = {
                 ...state,
-                comparing: [
-                    ...state.comparing.slice(0, index),
-                    ...state.comparing.slice(index + 1)
-                ]
+                comparing: comparingCopy
             };
             localStorage.setItem('comparing', JSON.stringify(result));
             return result;
