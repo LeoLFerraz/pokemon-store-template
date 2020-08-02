@@ -25,7 +25,7 @@ function RenderHeader(props) {
     return (
             <header className="header">
                 <div id="header-tipbar">
-                    <DefaultCarousel arrows={false} autoplay={true} autoplaySpeed={3000} dots={false}>
+                    <DefaultCarousel arrows={false} autoplay={true} autoplaySpeed={3000} dots={false} swipe={false}>
                         <span><ExclamationCircle />Stay safe during the COVID-19 pandemic, trainers! That gym badge can wait.</span>
                         <span><InfoCircle />Download our app for Pokedroid or iPokedex, click here!</span>
                     </DefaultCarousel>

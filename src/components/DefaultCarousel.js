@@ -10,7 +10,7 @@ const SlickButtonFix = ({currentSlide, slideCount, children, ...props}) => (
 export const DefaultCarousel = (props) => {
     const settings = {
         dots: props.dots,
-        lazyLoad: true,
+        lazyLoad: props.lazyLoad,
         infinite: true,
         speed: 500,
         slidesToShow: props.desktopShow || 1,
@@ -18,6 +18,8 @@ export const DefaultCarousel = (props) => {
         autoplay: props.autoplay,
         autoplaySpeed: props.autoplaySpeed,
         arrows: props.arrows,
+        swipe: props.swipe,
+        vertical: props.column,
         prevArrow: <SlickButtonFix> <ArrowLeftCircleFill size={36} /> </SlickButtonFix>,
         nextArrow: <SlickButtonFix> <ArrowRightCircleFill size={36} /> </SlickButtonFix>,
         responsive: [
@@ -33,7 +35,7 @@ export const DefaultCarousel = (props) => {
     };
 
     return (
-            <div className="default-carousel">
+            <div className={"default-carousel" + (props.column ? ' carousel-column' : '')}>
                 <Slider {...settings}>
                     {props.children}
                 </Slider>

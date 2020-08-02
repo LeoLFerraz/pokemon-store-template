@@ -58,12 +58,16 @@ export default function(state = initialState, action) {
                 let price = action.payload.price;
                 products.push({id, quantity, price});
             }
+            let stateCopy = {
+                ...state,
+                products: products
+            }
             let newState = {
                 ...state,
                 products,
                 quantity: recalculateQuantity(products),
                 subTotal: recalculateSubTotal(products),
-                total: recalculateTotal(state)
+                total: recalculateTotal(stateCopy)
             };
 
             localStorage.setItem("cart", JSON.stringify(newState));

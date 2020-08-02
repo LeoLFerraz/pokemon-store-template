@@ -89,6 +89,7 @@ export function APIInterface() {
                                             id: 'd1',
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/agumon.png'),
+                                            sprites: [require('./assets/media/agumon.png')],
                                             types: ['fire', 'dragon'],
                                             evolutions: [
                                                 {
@@ -111,6 +112,7 @@ export function APIInterface() {
                                             id: 'd4',
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/patamon.png'),
+                                            sprites: [require('./assets/media/patamon.png')],
                                             types: ['fire', 'dragon'],
                                             evolutions: [
                                                 {
@@ -133,6 +135,7 @@ export function APIInterface() {
                                             id: 'd2',
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/gabumon.png'),
+                                            sprites: [require('./assets/media/gabumon.png')],
                                             types: ['fire', 'ice'],
                                             evolutions: [
                                                 {
@@ -155,6 +158,7 @@ export function APIInterface() {
                                             id: 'd3',
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/terriermon.png'),
+                                            sprites: [require('./assets/media/terriermon.png')],
                                             types: ['fire', 'flying', 'cyber'],
                                             evolutions: [
                                                 {
@@ -173,6 +177,13 @@ export function APIInterface() {
                                             }
                                         }));
 
+                                        pokemonList.forEach(pokemon =>{
+                                            pokemon.types.forEach(type =>{
+                                                if (!typeList.includes(type)){
+                                                    typeList.push(type);
+                                                }
+                                            })
+                                        });
                                         json.pokemon.forEach((pokemon) =>{
                                             fetch(pokemon.pokemon.url)
                                                     .then((response) =>{

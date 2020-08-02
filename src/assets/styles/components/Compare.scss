@@ -1,0 +1,52 @@
+@import "../variables";
+
+.compare{
+    position: fixed;
+    top: -100%;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(-50%);
+    left: 50%;
+    color: $font-secondary-color;
+    background-color: rgba($color-white, 1);
+    z-index: 100;
+    padding: 20px;
+    border-radius: 15px;
+    &.open {
+        top: 30%;
+        opacity: 1;
+    }
+    table {
+        tr {
+            td {
+                padding: 5px 20px;
+                text-transform: capitalize;
+                &:not(:first-child) {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+.compare-modal-overlay{
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    left: -100%;
+    width: 0;
+    height: 100%;
+    background: $generic-overlay-background;
+    transition: opacity 0.5s ease;
+    &.open {
+        width: 100%;
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.close{
+    float: right;
+    cursor: pointer;
+}

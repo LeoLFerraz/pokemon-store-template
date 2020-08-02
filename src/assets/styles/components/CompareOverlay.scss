@@ -4,9 +4,14 @@
     position: fixed;
     right: 20px;
     text-align: center;
-    background-color: transparent;
     transition: all 1.5s ease;
     padding: 2px;
+    button {
+        &:active, &:focus {
+            outline: 0;
+            border: 0;
+        }
+    }
     .spriteRow{
         margin-bottom: 10px;
         display: flex;

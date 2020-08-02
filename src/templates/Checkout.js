@@ -28,16 +28,17 @@ export function CheckoutComponent(props) {
     }
     const [address, setAddress] = useState(props.shippingAddress || '');
 
-
     let items = props.products.map(product =>{
         let pokemon = props.pokemon?.find(pokemon => pokemon.id === product.id);
         return (
-            <tr className="" key={pokemon?.id}>
-                <td className="">
+            <tr className="product-info-wrapper" key={pokemon?.id}>
+                <td className="product-info">
                     <img src={pokemon?.sprite} /> <span className="product-name">{pokemon?.name}</span>
-                    <Dash className=""  onClick={() => removeOneQty(pokemon.id)}/>
-                    <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="" />
-                    <Plus className="" onClick={() => addOneQty(pokemon.id)}/>
+                </td>
+                <td className="product-quantity">
+                    <Dash className="remove-quantity-button"  onClick={() => removeOneQty(pokemon.id)}/>
+                    <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
+                    <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
                 </td>
                 <td className="product-price">${(pokemon?.discountedPrice * product?.quantity).toFixed(2)}</td>
                 <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: {id: pokemon.id}})}}><X /></td>
@@ -45,28 +46,31 @@ export function CheckoutComponent(props) {
         )
     });
     return (
-        <main className="checkout">
-            <div className="products">
+        <main className="checkout container">
+            <div className="products col-7">
                 <table>
-                    <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                    {items}
+                    <tbody>
+                        <tr>
+                            <th className="info-header">Product</th>
+                            <th className="quantity-header">Quantity</th>
+                            <th className="price-header">Price</th>
+                            <th></th>
+                        </tr>
+                        {items}
+                    </tbody>
                 </table>
                 <div className={(props.shippingAddress ? 'hide' : '')}>
                     <input value={address} onChange={(e) => setAddress(e.target.value)} />
                     <button onClick={() => props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: address}})}>OK</button>
                 </div>
             </div>
-            <div className="info">
+            <div className="summary col-5">
                 <span>{props.quantity} Products: {props.subTotal}</span>
                 <span>Shipping: {props.shippingCost}</span>
                 <div className="total">
                     <span>Total: {props.total}</span>
                 </div>
-                <button>Buy</button>
+                <button>Confirm Purchase</button>
             </div>
         </main>
     )
@@ -76,9 +80,9 @@ const mapStateToProps = (state) => {
     return {
         products: state.cart.products,
         quantity: state.cart.quantity,
-        subTotal: state.cart.subTotal,
-        total: state.cart.total,
-        shippingCost: state.cart.shippingCost,
+        subTotal: state.cart.subTotal.toFixed(2),
+        total: state.cart.total.toFixed(2),
+        shippingCost: state.cart.shippingCost.toFixed(2),
         shippingAddress: state.cart.shippingAddress,
         pokemon: state.pokemonData.pokemon
     };

@@ -8,3 +8,6 @@ export const OPEN_CART = "OPEN_CART";
 export const CLOSE_CART = "CLOSE_CART";
 export const TOGGLE_CART = "TOGGLE_CART";
 export const SET_SHIPPING_ADDRESS = "SET_SHIPPING_COST";
+export const OPEN_COMPARE = "OPEN_COMPARE";
+export const CLOSE_COMPARE = "CLOSE_COMPARE";
+export const TOGGLE_COMPARE = "TOGGLE_COMPARE";

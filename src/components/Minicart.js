@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/styles/components/Minicart.scss";
 import { connect } from "react-redux";
-import {ADD_TO_CART, CLOSE_CART, REMOVE_FROM_CART} from "../redux/actionTypes";
+import {ADD_TO_CART, CLOSE_CART, REMOVE_FROM_CART, SET_SHIPPING_ADDRESS} from "../redux/actionTypes";
 import { Cart, X, Plus, Dash } from "react-bootstrap-icons";
 import {Button, FormControl} from "react-bootstrap";
-import underConstruction from "../assets/utils/under-construction";
 import {Link} from "react-router-dom";
 
 const MinicartComponent = (props) => {
@@ -17,10 +16,10 @@ const MinicartComponent = (props) => {
             return;
         }
         props.dispatch({type: ADD_TO_CART, payload: {
-            id: pokemonId,
-            quantity: Number(qty),
-            set: true
-        }});
+                id: pokemonId,
+                quantity: Number(qty),
+                set: true
+            }});
     }
     function addOneQty(pokemonId) {
         props.dispatch({type: ADD_TO_CART, payload: {id: pokemonId, set: false}})
@@ -28,20 +27,21 @@ const MinicartComponent = (props) => {
     function removeOneQty(pokemonId) {
         props.dispatch({type: ADD_TO_CART, payload: {id: pokemonId, quantity: -1, set: false}})
     }
+    const [shippingAddress, setShippingAddress] = useState('');
 
     let items = props.products.map(product =>{
         let pokemon = props.pokemon?.find(pokemon => pokemon.id === product.id);
         return (
-            <tr className="minicart-table-product" key={pokemon?.id}>
-                <td className="product-info"><img src={pokemon?.sprite} /> <span className="product-name">{pokemon?.name}</span></td>
-                <td className="product-quantity">
-                    <Dash className="remove-quantity-button" onClick={() => removeOneQty(pokemon.id)}/>
-                    <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
-                    <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
-                </td>
-                <td className="product-price">${(pokemon?.discountedPrice * product?.quantity).toFixed(2)}</td>
-                <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: {id: pokemon.id}})}}><X /></td>
-            </tr>
+                <tr className="minicart-table-product" key={pokemon?.id}>
+                    <td className="product-info"><img src={pokemon?.sprite} /> <span className="product-name">{pokemon?.name}</span></td>
+                    <td className="product-quantity">
+                        <Dash className="remove-quantity-button" onClick={() => removeOneQty(pokemon.id)}/>
+                        <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
+                        <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
+                    </td>
+                    <td className="product-price">${(pokemon?.discountedPrice * product?.quantity).toFixed(2)}</td>
+                    <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: {id: pokemon.id}})}}><X /></td>
+                </tr>
         )
     });
 
@@ -50,7 +50,29 @@ const MinicartComponent = (props) => {
             props.dispatch({type: CLOSE_CART});
         }
     });
-
+    let calculateShippingRow = (
+            <tr className="cart-shipping-row">
+                <td className="cart-shipping-text">
+                    Calculate Shipping Cost
+                </td>
+                <td className="cart-shipping-input" colSpan="2">
+                    <FormControl type="text" placeholder="Postal Code" className="shipping-input" value={shippingAddress} onChange={(e) => {setShippingAddress(e.target.value)}}/>
+                </td>
+                <td className="cart-shipping-submit">
+                    <Button className="cart-shipping-button" type="button" onClick={(e) => {props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: shippingAddress}})}}>OK</Button>
+                </td>
+            </tr>
+    );
+    let shippingPriceRow = (
+            <tr className="cart-shipping-row">
+                <td className="cart-shipping-text" colSpan="2">
+                    Shipping Cost
+                </td>
+                <td className="cart-subtotal-value">
+                    ${props.shippingCost}
+                </td>
+            </tr>
+    );
     let productTable = () => {
         return (
                 <table className="minicart-table">
@@ -73,17 +95,7 @@ const MinicartComponent = (props) => {
                         </td>
                         <td></td>
                     </tr>
-                    <tr className="cart-shipping-row">
-                        <td className="cart-shipping-text">
-                            Calculate Shipping Cost
-                        </td>
-                        <td className="cart-shipping-input" colSpan="2">
-                            <FormControl type="text" placeholder="Postal Code" className="shipping-input" />
-                        </td>
-                        <td className="cart-shipping-submit">
-                            <Button className="cart-shipping-button" type="button" onClick={(e) => {underConstruction(e, "Sorry, you can only calculate your shipping cost on checkout right now!")}}>OK</Button>
-                        </td>
-                    </tr>
+                    { props.shippingCost ? shippingPriceRow : calculateShippingRow }
                     <tr className="cart-checkout-row">
                         <td className="cart-total-text">
                             <span className="total-text">Total: </span>
@@ -100,9 +112,9 @@ const MinicartComponent = (props) => {
 
     function renderNoProducts() {
         return (
-            <div className="empty-cart-message">
-                Your cart is empty! :(
-            </div>
+                <div className="empty-cart-message">
+                    Your cart is empty! :(
+                </div>
         )
     }
 
@@ -129,7 +141,8 @@ const mapStateToProps = (state) => {
         quantity: state.cart.quantity,
         subTotal: state.cart.subTotal,
         total: state.cart.total,
-        shippingCost: state.cart.shippingAddress,
+        shippingCost: state.cart.shippingCost,
+        shippingAddress: state.cart.shippingAddress,
         open: state.cart.open,
         pokemon: state.pokemonData.pokemon
     };

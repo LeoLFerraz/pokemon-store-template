@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import "../assets/styles/components/CompareOverlay.scss";
 import { useHistory } from 'react-router-dom'
-import {REMOVE_POKEMON_COMPARE} from "../redux/actionTypes";
+import {REMOVE_POKEMON_COMPARE, OPEN_COMPARE} from "../redux/actionTypes";
 import {XCircle} from "react-bootstrap-icons";
 
 
@@ -23,7 +23,7 @@ const CompareOverlayComponent = (props) => {
                     <div className="spriteRow">
                         {sprites}
                     </div>
-                    <button onClick={() => history.push('/compare')}>Compare</button>
+                    <button onClick={() => props.dispatch({type: OPEN_COMPARE})}>Compare</button>
                 </div>
             </div>
     )

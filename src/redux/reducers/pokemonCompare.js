@@ -1,6 +1,6 @@
-import { ADD_POKEMON_COMPARE, REMOVE_POKEMON_COMPARE } from "../actionTypes";
+import { ADD_POKEMON_COMPARE, REMOVE_POKEMON_COMPARE, OPEN_COMPARE, CLOSE_COMPARE, TOGGLE_COMPARE } from "../actionTypes";
 
-const initialState = JSON.parse(localStorage.getItem('comparing')) || {comparing: []};
+const initialState = JSON.parse(localStorage.getItem('comparing')) || {comparing: [], open: false};
 
 export default function(state = initialState, action) {
     switch (action.type) {
@@ -34,6 +34,24 @@ export default function(state = initialState, action) {
             };
             localStorage.setItem('comparing', JSON.stringify(result));
             return result;
+        }
+        case OPEN_COMPARE:{
+            return {
+                ...state,
+                open: true
+            }
+        }
+        case CLOSE_COMPARE:{
+            return {
+                ...state,
+                open: false
+            }
+        }
+        case TOGGLE_COMPARE:{
+            return {
+                ...state,
+                open: !state.open
+            }
         }
         default:
             return state;

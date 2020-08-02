@@ -23,7 +23,7 @@ export function Home(props) {
 
     return (
         <main className="home">
-            <DefaultCarousel arrows={true} dots={true}>
+            <DefaultCarousel arrows={true} dots={true} lazyLoad={true} swipe={true}>
                 <img src="https://via.placeholder.com/1920x450.png?text=COVID-19+and+Pokemon: a message from Nurse Joy" alt="Pokemon"/>
                 <img src="https://via.placeholder.com/1920x450.png?text=PokeWhey:+Pokemon+Strength+Supplements" alt="Pokemon"/>
                 <img src="https://via.placeholder.com/1920x450.png?text=PokeOffer+of+the+Week" alt="Pokemon"/>

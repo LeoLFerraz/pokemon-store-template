@@ -1,1 +1,0 @@
-// Tipos: erro, sucesso, info

@@ -11,7 +11,7 @@ const DefaultBuyButtonRenderer = (props) => {
         props.dispatch({type: OPEN_CART, payload: {}});
     }
     return (
-            <Button className="buy-button" onClick={() => addToCart(props)}>Add to cart</Button>
+            <Button className="buy-button" onClick={() => addToCart(props)}>{props.children}</Button>
     )
 }
 
