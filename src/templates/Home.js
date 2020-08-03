@@ -1,5 +1,6 @@
 import React from 'react';
 import { DefaultCarousel } from "../components/DefaultCarousel";
+import { DefaultShelf } from "../components/DefaultShelf"
 import "../assets/styles/templates/Home.scss";
 
 export function Home(props) {
@@ -22,13 +23,37 @@ export function Home(props) {
     // (4 100% width, auto height images) MOB
 
     return (
-        <main className="home">
-            <DefaultCarousel arrows={true} dots={true} lazyLoad={true} swipe={true}>
-                <img src="https://via.placeholder.com/1920x450.png?text=COVID-19+and+Pokemon: a message from Nurse Joy" alt="Pokemon"/>
-                <img src="https://via.placeholder.com/1920x450.png?text=PokeWhey:+Pokemon+Strength+Supplements" alt="Pokemon"/>
-                <img src="https://via.placeholder.com/1920x450.png?text=PokeOffer+of+the+Week" alt="Pokemon"/>
-                <img src="https://via.placeholder.com/1920x450.png?text=Daily+PokeDeals!" alt="Pokemon"/>
-            </DefaultCarousel>
-        </main>
+            <main className="home">
+                <DefaultCarousel arrows={true} dots={true} lazyLoad={true} swipe={true}>
+                    <img src="https://via.placeholder.com/1920x450.png?text=COVID-19+and+Pokemon: a message from Nurse Joy" alt="Pokemon"/>
+                    <img src="https://via.placeholder.com/1920x450.png?text=PokeWhey:+Pokemon+Strength+Supplements" alt="Pokemon"/>
+                    <img src="https://via.placeholder.com/1920x450.png?text=PokeOffer+of+the+Week" alt="Pokemon"/>
+                    <img src="https://via.placeholder.com/1920x450.png?text=Daily+PokeDeals!" alt="Pokemon"/>
+                </DefaultCarousel>
+                <div className="container">
+                    <div>
+                        <h2 className="shelf-title">Weekly Deals!</h2>
+                        <DefaultShelf catalog={{flag: 'Weekly_Promotion'} }/>
+                    </div>
+                    <div className="mosaicBanner">
+                        <div className="col-8">
+                            <img src="https://via.placeholder.com/450x450.png?text=PokeMosaic+Square" className="mosaicBanner-1"/>
+                            <img src="https://via.placeholder.com/450x450.png?text=PokeMosaic+Square" className="mosaicBanner-2"/>
+                            <img src="https://via.placeholder.com/900x450.png?text=PokeMosaic+Rectangle" className="mosaicBanner-3"/>
+                        </div>
+                        <div className="col-4">
+                            <img src="https://via.placeholder.com/450x900.png?text=PokeMosaic+Vertical+Rectangle" className="mosaicBanner-4"/>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="shelf-title">Daily Discounts!</h2>
+                        <DefaultShelf catalog={{flag: 'Daily_Discount'} }/>
+                    </div>
+                    <div>
+                        <h2 className="shelf-title">PokeDeal 2020!</h2>
+                        <DefaultShelf catalog={{flag: 'PokeDeal_2020'} }/>
+                    </div>
+                </div>
+            </main>
     )
 }

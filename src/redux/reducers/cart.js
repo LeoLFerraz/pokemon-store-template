@@ -1,4 +1,4 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, OPEN_CART, CLOSE_CART, TOGGLE_CART, SET_SHIPPING_ADDRESS} from "../actionTypes";
+import {ADD_TO_CART, REMOVE_FROM_CART, OPEN_CART, CLOSE_CART, TOGGLE_CART, SET_SHIPPING_ADDRESS, CLEAR_CART} from "../actionTypes";
 
 
 const initialState = JSON.parse(localStorage.getItem("cart")) || {
@@ -127,10 +127,24 @@ export default function(state = initialState, action) {
             let newState = {
                 ...state,
                 shippingAddress: action.payload.shippingAddress,
-                shippingCost: Number((Math.random()*100).toFixed(2)),
+                shippingCost: action.payload.shippingAddress.length > 0 ? Number((Math.random()*100).toFixed(2)) : 0,
             }
             newState.total = recalculateTotal(newState);
 
+            localStorage.setItem("cart", JSON.stringify(newState));
+            return newState
+        }
+        case CLEAR_CART: {
+            let newState = {
+                ...state,
+                products: [],
+                quantity: 0,
+                open: false,
+                shippingCost: 0,
+                shippingAddress: '',
+                subTotal: 0,
+                total: 0
+            };
             localStorage.setItem("cart", JSON.stringify(newState));
             return newState
         }

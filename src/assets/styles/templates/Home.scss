@@ -2,4 +2,24 @@
     .default-carousel {
         margin-bottom: 28px; // Slick dots' absolute positioning
     }
+    .mosaicBanner {
+        display: flex;
+        justify-content: space-around;
+        div {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 0;
+            &:first-of-type {
+                margin-right: 10px;
+            }
+        }
+        .mosaicBanner-1, .mosaicBanner-2 {
+            width: 49%;
+            margin-bottom: 10px;
+        }
+        .mosaicBanner-3, .mosaicBanner-4 {
+            width: 100%;
+        }
+    }
 }

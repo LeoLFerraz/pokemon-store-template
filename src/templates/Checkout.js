@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import { connect } from "react-redux";
-import {Dash, Plus, X} from "react-bootstrap-icons";
-import {ADD_TO_CART, REMOVE_FROM_CART, SET_SHIPPING_ADDRESS} from "../redux/actionTypes";
+import { Dash, Plus, X } from "react-bootstrap-icons";
+import {ADD_TO_CART, REMOVE_FROM_CART, SET_SHIPPING_ADDRESS, CLEAR_CART} from "../redux/actionTypes";
 import "../assets/styles/templates/Checkout.scss";
-
+import Swal from "sweetalert2";
+import { useHistory } from 'react-router-dom';
+import { Button, FormControl } from "react-bootstrap";
 
 export function CheckoutComponent(props) {
+    let history = useHistory();
+    function resetShipping() {
+        props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: ''}})
+    }
     function updateQtyViaInput(evt, pokemonId) {
         let qty = evt.target.value;
         if(qty === "" || undefined) {
@@ -26,6 +32,38 @@ export function CheckoutComponent(props) {
     function removeOneQty(pokemonId) {
         props.dispatch({type: ADD_TO_CART, payload: {id: pokemonId, quantity: -1, set: false}})
     }
+    function confirmPurchase() {
+        if(props.shippingAddress.length === 0) {
+            Swal.fire({
+                title: 'You must provide a shipping address',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
+        } else {
+            Swal.fire({
+                title: 'Listen up, trainer!',
+                text: 'This feature is not finished. Proceeding will clear your cart to simulate a purchase. Do you wish to proceed?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.value) {
+                    props.dispatch({type: CLEAR_CART});
+                    Swal.fire(
+                            {
+                                title: 'Success!',
+                                text: "We'll pretend you just bought some pokemon and you can pretend your credit card was just charged.",
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }
+                    ).then(() => {
+                        history.push("/");
+                    });
+                }
+            })
+        }
+    }
     const [address, setAddress] = useState(props.shippingAddress || '');
 
     let items = props.products.map(product =>{
@@ -45,32 +83,48 @@ export function CheckoutComponent(props) {
             </tr>
         )
     });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: address}})
+        }
+    });
+
     return (
         <main className="checkout container">
+            <div className="page-title col-12">
+                Cart
+            </div>
             <div className="products col-7">
                 <table>
-                    <tbody>
+                    <thead>
                         <tr>
                             <th className="info-header">Product</th>
                             <th className="quantity-header">Quantity</th>
                             <th className="price-header">Price</th>
                             <th></th>
                         </tr>
+                    </thead>
+                    <tbody>
                         {items}
                     </tbody>
                 </table>
-                <div className={(props.shippingAddress ? 'hide' : '')}>
-                    <input value={address} onChange={(e) => setAddress(e.target.value)} />
-                    <button onClick={() => props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: address}})}>OK</button>
-                </div>
             </div>
             <div className="summary col-5">
-                <span>{props.quantity} Products: {props.subTotal}</span>
-                <span>Shipping: {props.shippingCost}</span>
-                <div className="total">
-                    <span>Total: {props.total}</span>
+                <div className={(props.shippingAddress ? 'hide' : 'shipping-address-wrapper')}>
+                    <FormControl value={address} placeholder="Postal Code" onChange={(e) => setAddress(e.target.value)} className="shipping-address-input"/>
+                    <Button className="shipping-address-submit" onClick={() => props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: address}})}>OK</Button>
                 </div>
-                <button>Confirm Purchase</button>
+                <div className="summary-info-wrapper">
+                    <div className="summary-subtotal summary-row"><div className="summary-title">Subtotal:</div> <div className="summary-value">{props.subTotal}</div></div>
+                    <div className="summary-shipping-fee summary-row"><div className="summary-title">Shipping Fee
+                        <span className="postal-code" onClick={() => {resetShipping()}}>{props.shippingAddress ? ' (to ' + props.shippingAddress + ')' : ''}</span>:
+                    </div> <div className="summary-value">{props.shippingCost}</div></div>
+                    <div className="summary-total summary-row">
+                        <div className="summary-title">Total:</div> <div className="summary-value">{props.total}</div>
+                    </div>
+                    <Button onClick={() => confirmPurchase()}>Confirm Purchase</Button>
+                </div>
             </div>
         </main>
     )

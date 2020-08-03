@@ -4,9 +4,16 @@ import { connect } from "react-redux";
 import {ADD_TO_CART, CLOSE_CART, REMOVE_FROM_CART, SET_SHIPPING_ADDRESS} from "../redux/actionTypes";
 import { Cart, X, Plus, Dash } from "react-bootstrap-icons";
 import {Button, FormControl} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useHistory } from "react-router-dom";
 
 const MinicartComponent = (props) => {
+    let history = useHistory();
+    function closeCartAndRedirect() {
+        props.dispatch({type: CLOSE_CART});
+        setTimeout(() => {
+            history.push("/checkout");
+        }, 300)
+    }
     function updateQtyViaInput(evt, pokemonId) {
         let qty = evt.target.value;
         if(qty === "" || undefined) {
@@ -102,7 +109,7 @@ const MinicartComponent = (props) => {
                             <span className="total-value">${props.total.toFixed(2)}</span>
                         </td>
                         <td className="cart-checkout" colSpan="3">
-                            <Link to="/checkout"><Button className="cart-checkout-button" type="button">Proceed to Checkout</Button></Link>
+                            <Link onClick={() => closeCartAndRedirect()}><Button className="cart-checkout-button" type="button">Proceed to Checkout</Button></Link>
                         </td>
                     </tr>
                     </tbody>

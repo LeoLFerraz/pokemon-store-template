@@ -20,6 +20,13 @@ html {
     padding-bottom: 250px;
 }
 
+.page-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $primary-color-pastel;
+    margin: 20px 0;
+}
+
 // SweetAlert2 overrides:
 .swal2-icon {
     border-color: $primary-color-pastel !important;
@@ -37,4 +44,18 @@ html {
 
 .swal2-content, .swal2-title {
     color: $font-secondary-color;
+}
+
+.swal2-warning {
+    color: $primary-color-pastel !important;
+}
+
+.swal2-success-ring {
+    border-color: $secondary-color !important;
+}
+
+.swal2-icon.swal2-success {
+    span {
+        background-color: $secondary-color !important;
+    }
 }

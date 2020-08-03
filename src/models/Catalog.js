@@ -20,6 +20,7 @@ class Catalog {
         let name = filters.name.toLowerCase();
         let generations = filters.generations;
         let types = filters.types;
+        let flag = filters.flag;
         let {attack, defense, hp, spAttack, spDefense, speed} = filters.stats || {};
         let seller = filters.seller;
         if(isNaN(filters.id)) {
@@ -47,7 +48,9 @@ class Catalog {
             let specialAttackTest = (spAttack ? item.stats['special-attack'] >= spAttack : true);
             let specialDefenseTest = (spDefense ? item.stats['special-defense'] >= spDefense : true);
             let speedTest = (speed ? item.stats.speed >= speed : true);
-            return (nameTest && sellerTest && generationTest && idTeste && typeTest && attackTest && defenseTest && hpTest && specialAttackTest && specialDefenseTest && speedTest);
+            let flagTest = (flag ? item.flags === flag : true);
+
+            return (nameTest && sellerTest && generationTest && idTeste && typeTest && attackTest && defenseTest && hpTest && specialAttackTest && specialDefenseTest && speedTest && flagTest);
         });
         switch (filters.orderBy) {
             case 'name':

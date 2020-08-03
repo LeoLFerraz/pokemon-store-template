@@ -104,7 +104,7 @@ export function Catalog(props) {
     return (
         <main className="container catalog">
             <div className="row catalog-header">
-                <div className="col-9 catalog-title">
+                <div className="col-9 catalog-title page-title">
                     Catalog
                 </div>
                 <div className="col-3 catalog-orderBy">
@@ -129,28 +129,28 @@ export function Catalog(props) {
                         <Select defaultValue={typesOption.find((item) => { return item.value == types}) || []} onChange={(e) => e !== null ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption}/>
                     </label>
                     <label>
-                        Defense
-                        <FormControl value={defense} onChange={(e) => setDefense(e.target.value)} type='text'/>
+                        Min. Defense
+                        <FormControl value={defense} onChange={(e) => setDefense(e.target.value)} type='number'/>
                     </label>
                     <label>
-                        Attack
-                        <FormControl value={attack} onChange={(e) => setAttack(e.target.value)} type='text'/>
+                        Min. Attack
+                        <FormControl value={attack} onChange={(e) => setAttack(e.target.value)} type='number'/>
                     </label>
                     <label>
-                        Hp
-                        <FormControl value={hp} onChange={(e) => setHp(e.target.value)} type='text'/>
+                        Min. Hp
+                        <FormControl value={hp} onChange={(e) => setHp(e.target.value)} type='number'/>
                     </label>
                     <label>
-                        Speed
-                        <FormControl value={speed} onChange={(e) => setSpeed(e.target.value)} type='text'/>
+                        Min. Speed
+                        <FormControl value={speed} onChange={(e) => setSpeed(e.target.value)} type='number'/>
                     </label>
                     <label>
-                        Special Attack
-                        <FormControl value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='text'/>
+                        Min. Special Attack
+                        <FormControl value={spAttack} onChange={(e) => setSpAttack(e.target.value)} type='number'/>
                     </label>
                     <label>
-                        Special Defense
-                        <FormControl value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='text'/>
+                        Min. Special Defense
+                        <FormControl  value={spDefense} onChange={(e) => setSpDefense(e.target.value)} type='number'/>
                     </label>
                     <label>
                         Seller
