@@ -5,6 +5,7 @@ export function Loading() {
     return (
             <div className="loader-wrapper">
                 <h1 className="loading-text">Loading PokeStore: Fire Version</h1>
+                <div className="loading-subtitle">Actually, this screen stays on for 2.5 seconds longer than it has to just so you can appreciate this awesome SVG loading screen :D</div>
                 <div className="loader">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
