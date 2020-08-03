@@ -169,7 +169,7 @@ export function Catalog(props) {
                     </div>
                 </Collapse>
                 <div className="col-md-9 col-12 catalog-results">
-                    {pokemon}
+                    {pokemon.length > 0 ? pokemon : <div className="empty-results">Sorry, no pokemon found for these search parameters :(</div>}
                 </div>
             </div>
         </main>
