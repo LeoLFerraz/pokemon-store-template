@@ -7,6 +7,11 @@
     transition: all 1.5s ease;
     padding: 2px;
     button {
+        @media (max-width: $breakpoint-mobile-max) {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
         &:active, &:focus {
             outline: 0;
             border: 0;
@@ -18,8 +23,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media (max-width: $breakpoint-mobile-max) {
+            flex-direction: column;
+            position: fixed;
+            right: 10px;
+            bottom: 60px;
+        }
         img{
             width: 80px;
+            @media (max-width: $breakpoint-mobile-max) {
+                width: 60px;
+            }
         }
         .sprite-wrapper {
             margin-bottom: 15px;
@@ -33,6 +47,9 @@
                 z-index: -2;
                 border: 5px solid rgba($secondary-color, 0.5);
                 left: 35px;
+                @media (max-width: $breakpoint-mobile-max) {
+                    display: none;
+                }
             }
             &:first-child {
                 &:before {
@@ -50,6 +67,9 @@
             position: absolute;
             top: 0;
             right: 0;
+            @media (max-width: $breakpoint-mobile-max) {
+                width: 12px;
+            }
         }
     }
     button {

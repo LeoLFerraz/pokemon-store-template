@@ -249,4 +249,8 @@
             color: $font-primary-color;
         }
     }
+    .navbar-nav {
+        overflow: auto;
+        padding-bottom: 30px;
+    }
 }
