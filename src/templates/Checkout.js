@@ -10,6 +10,9 @@ import { PencilSquare } from "react-bootstrap-icons";
 
 export function CheckoutComponent(props) {
     let history = useHistory();
+    if(props.products.length === 0) {
+        history.push("/");
+    }
     function resetShipping() {
         props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: ''}})
     }

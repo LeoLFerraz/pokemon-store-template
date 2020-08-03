@@ -5,18 +5,29 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
+    @media (max-width: $breakpoint-mobile-max) {
+        padding: 10px;
+    }
     .loader {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 5;
+        @media (max-width: $breakpoint-mobile-max) {
+            top: 70%;
+        }
     }
 
     .loading-text, .loading-subtitle {
         text-align: center;
         color: $font-primary-color;
         margin-top: 50px;
+        @media (max-width: $breakpoint-mobile-max) {
+            margin-top: 25px;
+        }
     }
 
     @keyframes blur {

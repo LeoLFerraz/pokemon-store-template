@@ -62,6 +62,13 @@
             }
         }
     }
+    .postal-code {
+        color: $primary-color-pastel;
+        cursor: pointer;
+        svg {
+            color: $font-secondary-color;
+        }
+    }
     .table-head-product {
         padding-left: 10px;
     }

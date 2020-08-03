@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../assets/styles/components/Minicart.scss";
 import { connect } from "react-redux";
 import {ADD_TO_CART, CLOSE_CART, REMOVE_FROM_CART, SET_SHIPPING_ADDRESS} from "../redux/actionTypes";
-import { Cart, X, Plus, Dash } from "react-bootstrap-icons";
+import {Cart, X, Plus, Dash, PencilSquare} from "react-bootstrap-icons";
 import {Button, FormControl} from "react-bootstrap";
 import {Link, useHistory } from "react-router-dom";
 
@@ -13,6 +13,9 @@ const MinicartComponent = (props) => {
         setTimeout(() => {
             history.push("/checkout");
         }, 300)
+    }
+    function resetShipping() {
+        props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: ''}})
     }
     function updateQtyViaInput(evt, pokemonId) {
         let qty = evt.target.value;
@@ -76,9 +79,10 @@ const MinicartComponent = (props) => {
             <tr className="cart-shipping-row">
                 <td className="cart-shipping-text" colSpan="2">
                     Shipping Cost
+                    <span className="postal-code" onClick={() => {resetShipping()}}>{props.shippingAddress ? ' (to ' + props.shippingAddress + ')' : ''}{props.shippingAddress ? <PencilSquare/> : ''}</span>:
+
                 </td>
-                <td className="cart-subtotal-value">
-                    ${props.shippingCost}
+                <td className="cart-subtotal-value">${props.shippingCost}
                 </td>
             </tr>
     );
