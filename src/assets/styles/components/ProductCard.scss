@@ -50,6 +50,7 @@
         button {
             background: none;
             border: none;
+            color: $font-secondary-color;
             &:active, &:focus {
                 outline: none;
                 border: 0;

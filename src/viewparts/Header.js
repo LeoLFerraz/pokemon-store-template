@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { OPEN_CART } from "../redux/actionTypes";
 import underConstruction from "../assets/utils/under-construction";
 import isMobile from "../assets/utils/is-mobile";
+import {configs} from "../config/variables";
 
 function RenderHeader(props) {
     let history = useHistory();
@@ -24,7 +25,6 @@ function RenderHeader(props) {
         e.preventDefault();
         history.push("/catalog?name=" + searchParam);
     }
-
     useEffect(() => {
         window.addEventListener('scroll', function(e) {
             setShowTip(window.scrollY === 0);
@@ -50,7 +50,7 @@ function RenderHeader(props) {
                             <Navbar className="row">
                                 <Navbar.Brand as={Link} to="/" className="col-2">
                                     <PokeStoreLogo id="pokestoreLogo" />
-                                    <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
+                                    <div className="brand-name">{configs.storeShortName}<br/><span className="brand-name-themed">{configs.storeType}</span></div>
                                 </Navbar.Brand>
 
                                 <Form inline className="col-7" onSubmit={(e) => {searchPokemon(e)}}>
@@ -69,7 +69,7 @@ function RenderHeader(props) {
                             <Nav className="mr-auto col-12">
                                 <NavDropdown title="Departments" className="departments-dropdown">
                                     {props.types.map((value, index) => {
-                                        if(value !== "fire") {
+                                        if(value !== configs.storeType) {
                                             return <NavDropdown.Item className="department-link" key={'type' + index} as={Link} to={"/catalog?types=" + value}>{value}</NavDropdown.Item>
                                         }
                                     })}
@@ -98,7 +98,7 @@ function RenderHeader(props) {
                             <div>
                                 <Navbar.Brand as={Link} to="/" className="col-2" onClick={() => {setMobileNavExpanded(false)}}>
                                     <PokeStoreLogo id="pokestoreLogo" />
-                                    <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
+                                    <div className="brand-name">{configs.brandName}<br/><span className="brand-name-themed">{configs.storeType}</span></div>
                                 </Navbar.Brand>
                             </div>
                         </Navbar>
@@ -114,7 +114,7 @@ function RenderHeader(props) {
                                     <Nav className="mr-auto">
                                         <Link to="/catalog" onClick={() => {setMobileNavExpanded(false)}} className="department-link" data-toggle="basic-navbar-nav">All Pokemon</Link>
                                         {props.types.map((value, index) => {
-                                            if(value !== "fire") {
+                                            if(value !== configs.storeType) {
                                                 return <Link onClick={() => {setMobileNavExpanded(false)}} className="department-link" key={'type' + index} to={"/catalog?types=" + value}>{value}</Link>
                                             }
                                         })}

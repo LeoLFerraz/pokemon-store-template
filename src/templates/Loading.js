@@ -1,10 +1,11 @@
 import React from 'react';
 import "../assets/styles/templates/Loading.scss";
+import { configs } from "../config/variables";
 
 export function Loading() {
     return (
             <div className="loader-wrapper">
-                <h1 className="loading-text">Loading PokeStore: Fire Version</h1>
+                <h1 className="loading-text">Loading { configs.storeShortName }: { configs.storeType } Version</h1>
                 <div className="loading-subtitle">Actually, this screen stays on for 2.5 seconds longer than it has to just so you can appreciate this awesome SVG loading screen :D</div>
                 <div className="loader">
                     <svg

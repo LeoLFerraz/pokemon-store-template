@@ -10,7 +10,66 @@ html {
         }
     }
     body {
+        color: $font-secondary-color;
+        background-color: $background-color;
         font-family: Montserrat, sans-serif;
+    }
+    input{
+        color: $font-secondary-color !important;
+        background-color: $background-color !important;
+        border-color: $primary-color-pastel !important;
+        box-shadow: none !important;
+        &:focus {
+            border-color: $primary-color-pastel !important;
+            box-shadow: none !important;
+        }
+    }
+
+    // Select override
+    .select__control{
+        background-color: $background-color;
+        border-color: $primary-color-pastel !important;
+        box-shadow: none !important;
+        &:focus {
+            border-color: $primary-color-pastel !important;
+            box-shadow: none !important;
+        }
+        .select__indicator-separator {
+            border-color: $primary-color-pastel;
+        }
+    }
+    .select__value-container{
+        background-color: $background-color;
+    }
+    .select__indicators{
+        background-color: $background-color;
+    }
+    .select__menu{
+        color: $font-secondary-color;
+        background-color: $background-color;
+    }
+    .select__option{
+        &.select__option--is-selected{
+            color: $font-secondary-color;
+            background-color: transparent;
+        }
+        &.select__option--is-focused{
+            color: $font-primary-color;
+            background-color: $primary-color-pastel;
+        }
+    }
+    .select__placeholder{
+        color: $font-secondary-color
+    }
+    .select__multi-value{
+        background-color: rgba($primary-color-pastel, 0.3);
+        div {
+            color: $font-primary-color;
+        }
+    }
+    .select__single-value{
+        color: $font-secondary-color;
+        background-color: $background-color;
     }
 }
 
@@ -65,4 +124,30 @@ html {
     span {
         background-color: $secondary-color !important;
     }
+}
+.swal2-popup {
+    background-color: $background-color;
+}
+
+// Scrollbar
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: $background-color;
+}
+
+::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: $background-color;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: $primary-color-pastel;
 }

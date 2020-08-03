@@ -12,6 +12,7 @@ import {ReactComponent as Twitter} from "../assets/svg/Twitter.svg";
 import {ReactComponent as Instagram} from "../assets/svg/Instagram.svg";
 import {Form, FormControl, Button} from "react-bootstrap";
 import underConstruction from "../assets/utils/under-construction";
+import { configs } from "../config/variables";
 
 //TODO: Newsletter onclick.
 
@@ -43,7 +44,7 @@ export function Footer(props) {
                     <div className="row">
                         <div className="col-3 d-lg-flex d-none store-brand justify-content-center align-items-center">
                             <PokeStoreLogo id="pokestoreLogo" />
-                            <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
+                            <div className="brand-name">{ configs.storeShortName }<br/><span className="brand-name-themed">{ configs.storeType }</span></div>
                         </div>
                         <div className="payment-forms-wrapper col-md-5 col-12 mb-md-1 mb-4">
                             <div className="row">

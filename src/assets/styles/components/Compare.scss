@@ -8,7 +8,7 @@
     transform: translateX(-50%);
     left: 50%;
     color: $font-secondary-color;
-    background-color: rgba($color-white, 1);
+    background-color: $background-color;
     z-index: 100;
     padding: 20px;
     border-radius: 15px;
@@ -26,6 +26,9 @@
                 }
             }
         }
+    }
+    img {
+        max-height: 100px;
     }
 }
 

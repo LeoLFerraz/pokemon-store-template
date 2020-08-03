@@ -2,6 +2,7 @@ import React from 'react';
 import { DefaultCarousel } from "../components/DefaultCarousel";
 import { DefaultShelf } from "../components/DefaultShelf"
 import "../assets/styles/templates/Home.scss";
+import { configs } from "../config/variables";
 
 export function Home(props) {
     // TODO:
@@ -27,18 +28,18 @@ export function Home(props) {
             <main className="home">
                 <div className="d-xl-block d-none">
                     <DefaultCarousel arrows={true} dots={true} lazyLoad={true} swipe={true}>
-                        <img src="https://via.placeholder.com/1920x450.png?text=COVID-19+and+Pokemon: a message from Nurse Joy" alt="Pokemon"/>
-                        <img src="https://via.placeholder.com/1920x450.png?text=PokeWhey:+Pokemon+Strength+Supplements" alt="Pokemon"/>
-                        <img src="https://via.placeholder.com/1920x450.png?text=PokeOffer+of+the+Week" alt="Pokemon"/>
-                        <img src="https://via.placeholder.com/1920x450.png?text=Daily+PokeDeals!" alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/1920x450/" + configs.bannerBGColor + "/FFFFFF/?text=COVID-19+and+Pokemon: a message from Nurse Joy"} alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/1920x450/" + configs.bannerBGColor + "/FFFFFF/?text=PokeWhey:+Pokemon+Strength+Supplements"} alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/1920x450/" + configs.bannerBGColor + "/FFFFFF/?text=PokeOffer+of+the+Week"} alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/1920x450/" + configs.bannerBGColor + "/FFFFFF/?text=Daily+PokeDeals!"} alt="Pokemon"/>
                     </DefaultCarousel>
                 </div>
                 <div className="d-xl-none d-block">
                     <DefaultCarousel arrows={false} dots={true} lazyLoad={true} swipe={true}>
-                        <img src="https://via.placeholder.com/365x342.png?text=COVID-19+and+Pokemon: a message from Nurse Joy" alt="Pokemon"/>
-                        <img src="https://via.placeholder.com/365x342.png?text=PokeWhey:+Pokemon+Strength+Supplements" alt="Pokemon"/>
-                        <img src="https://via.placeholder.com/365x342.png?text=PokeOffer+of+the+Week" alt="Pokemon"/>
-                        <img src="https://via.placeholder.com/365x342.png?text=Daily+PokeDeals!" alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/365x342/" + configs.bannerBGColor + "/FFFFFF/?text=COVID-19+and+Pokemon: a message from Nurse Joy"} alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/365x342/" + configs.bannerBGColor + "/FFFFFF/?text=PokeWhey:+Pokemon+Strength+Supplements"} alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/365x342/" + configs.bannerBGColor + "/FFFFFF/?text=PokeOffer+of+the+Week"} alt="Pokemon"/>
+                        <img src={"https://via.placeholder.com/365x342/" + configs.bannerBGColor + "/FFFFFF/?text=Daily+PokeDeals!"} alt="Pokemon"/>
                     </DefaultCarousel>
                 </div>
                 <div className="container">
@@ -48,12 +49,12 @@ export function Home(props) {
                     </div>
                     <div className="mosaicBanner">
                         <div className="col-md-8 col-12">
-                            <img src="https://via.placeholder.com/450x450.png?text=PokeMosaic+Square" className="mosaicBanner-1"/>
-                            <img src="https://via.placeholder.com/450x450.png?text=PokeMosaic+Square" className="mosaicBanner-2"/>
-                            <img src="https://via.placeholder.com/900x450.png?text=PokeMosaic+Rectangle" className="mosaicBanner-3 d-none d-md-block"/>
+                            <img src={"https://via.placeholder.com/450x450/" + configs.bannerBGColor + "/FFFFFF/?text=PokeMosaic+Square"} className="mosaicBanner-1"/>
+                            <img src={"https://via.placeholder.com/450x450/" + configs.bannerBGColor + "/FFFFFF/?text=PokeMosaic+Square"} className="mosaicBanner-2"/>
+                            <img src={"https://via.placeholder.com/900x450/" + configs.bannerBGColor + "/FFFFFF/?text=PokeMosaic+Rectangle"} className="mosaicBanner-3 d-none d-md-block"/>
                         </div>
                         <div className="col-md-4 col-12">
-                            <img src="https://via.placeholder.com/450x900.png?text=PokeMosaic+Vertical+Rectangle" className="mosaicBanner-4 d-none d-md-block"/>
+                            <img src={"https://via.placeholder.com/450x900/" + configs.bannerBGColor + "/FFFFFF/?text=PokeMosaic+Vertical+Rectangle"} className="mosaicBanner-4 d-none d-md-block"/>
                         </div>
                     </div>
                     <div>

@@ -6,6 +6,7 @@ import Select from "react-select";
 import {Collapse, FormControl} from "react-bootstrap";
 import '../assets/styles/templates/Catalog.scss';
 import { ArrowUp } from "react-bootstrap-icons";
+import { configs } from "../config/variables";
 
 export function Catalog(props) {
     let query = new URLSearchParams(props.query);
@@ -38,7 +39,7 @@ export function Catalog(props) {
             label: type
         }
     }).filter(type => {
-        return type.value !== 'fire';
+        return type.value !== configs.storeType;
     });
     let pokemon = cat.catalog.map(item =>{
         return (
@@ -113,7 +114,7 @@ export function Catalog(props) {
                 <div className="col-3 d-md-block d-none catalog-orderBy">
                     <label>
                         Order By:
-                        <Select defaultValue={orderByOptions.find((item) => { return item.value == orderBy}) || orderByOptions[0]} onChange={(e) => setOrderBy(e.value)} options={orderByOptions} />
+                        <Select defaultValue={orderByOptions.find((item) => { return item.value == orderBy}) || orderByOptions[0]} onChange={(e) => setOrderBy(e.value)} classNamePrefix="select" options={orderByOptions} />
                     </label>
                 </div>
             </div>
@@ -131,11 +132,11 @@ export function Catalog(props) {
                             </label>
                             <label>
                                 Generation
-                                <Select defaultValue={generationsOption.find((item) => { return item.value == generations}) || []}  onChange={(e) => e !== null ? setGenerations(e.map((item) => {return item.value})) : setGenerations([])} isMulti className="catalog-select" options={generationsOption}/>
+                                <Select defaultValue={generationsOption.find((item) => { return item.value == generations}) || []}  onChange={(e) => e !== null ? setGenerations(e.map((item) => {return item.value})) : setGenerations([])} isMulti className="catalog-select" classNamePrefix="select" options={generationsOption}/>
                             </label>
                             <label>
                                 Type
-                                <Select defaultValue={typesOption.find((item) => { return item.value == types}) || []} onChange={(e) => e !== null ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" options={typesOption}/>
+                                <Select defaultValue={typesOption.find((item) => { return item.value == types}) || []} onChange={(e) => e !== null ? setTypes(e.map((item) => {return item.value})) : setTypes([])} isMulti className="catalog-select" classNamePrefix="select" options={typesOption}/>
                             </label>
                             <label>
                                 Min. Defense
@@ -163,7 +164,7 @@ export function Catalog(props) {
                             </label>
                             <label>
                                 Seller
-                                <Select defaultValue={sellerOptions.find((item) => { return item.value == seller}) || []} onChange={(e) => e !== null ? setSeller(e.value) : setSeller([])} className="catalog-select" options={sellerOptions}/>
+                                <Select defaultValue={sellerOptions.find((item) => { return item.value == seller}) || []} onChange={(e) => e !== null ? setSeller(e.value) : setSeller([])} className="catalog-select" classNamePrefix="select" options={sellerOptions}/>
                             </label>
                         </div>
                     </div>

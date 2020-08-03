@@ -8,8 +8,9 @@ import {STORE_POKEMON_DATA, TOGGLE_LOADING} from './redux/actionTypes';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { configs } from "./config/variables";
 
-const pokeData = APIInterface();
+const pokeData = APIInterface(configs.storeType);
 
 pokeData.then(result =>{
     store.dispatch({type: STORE_POKEMON_DATA, payload: result});

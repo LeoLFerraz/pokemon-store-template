@@ -54,9 +54,8 @@ function searchEvolutionData(evolutions) {
     });
 }
 
-export function APIInterface() {
+export function APIInterface(type) {
     return new Promise((resolve, reject) => {
-        const storeType = "fire";
         // Check local storage
         let localPokemon = localStorage.getItem('pokemon');
         if (localPokemon){
@@ -74,7 +73,7 @@ export function APIInterface() {
             resolve(result);
         } else {
             // else, load API info, store on local storage and return parsed info.
-            fetch('https://pokeapi.co/api/v2/type/10')
+            fetch('https://pokeapi.co/api/v2/type/'+type)
                     .then((response) =>{
                         response.json()
                                 .then((json) => {
@@ -90,7 +89,7 @@ export function APIInterface() {
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/agumon.png'),
                                             sprites: [require('./assets/media/agumon.png')],
-                                            types: ['fire', 'dragon'],
+                                            types: [type, 'dragon'],
                                             evolutions: [
                                                 {
                                                     name: 'Agumon',
@@ -113,7 +112,7 @@ export function APIInterface() {
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/patamon.png'),
                                             sprites: [require('./assets/media/patamon.png')],
-                                            types: ['fire', 'dragon'],
+                                            types: [type, 'dragon'],
                                             evolutions: [
                                                 {
                                                     name: 'Agumon',
@@ -136,7 +135,7 @@ export function APIInterface() {
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/gabumon.png'),
                                             sprites: [require('./assets/media/gabumon.png')],
-                                            types: ['fire', 'ice'],
+                                            types: [type, 'ice'],
                                             evolutions: [
                                                 {
                                                     name: 'Gabumon',
@@ -159,7 +158,7 @@ export function APIInterface() {
                                             seller: 'digiStore',
                                             sprite: require('./assets/media/terriermon.png'),
                                             sprites: [require('./assets/media/terriermon.png')],
-                                            types: ['fire', 'flying', 'cyber'],
+                                            types: [type, 'flying', 'cyber'],
                                             evolutions: [
                                                 {
                                                     name: 'Terriermon',

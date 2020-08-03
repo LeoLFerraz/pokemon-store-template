@@ -5,6 +5,9 @@
     position: sticky;
     top: 0;
     z-index: 3;
+    input {
+        border: 0;
+    }
     #header-tipbar {
         background-color: $secondary-color;
         max-height: 30px;
@@ -127,6 +130,7 @@
             font-weight: 500;
             font-size: 1rem;
             text-align: center;
+            text-transform: capitalize;
             &-themed {
                 color: $primary-color-lighter;
                 text-shadow: 0 0 5px $primary-color-darker;

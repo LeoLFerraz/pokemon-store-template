@@ -21,6 +21,10 @@
         }
     }
 
+    .loading-text {
+        text-transform: capitalize;
+    }
+
     .loading-text, .loading-subtitle {
         text-align: center;
         color: $font-primary-color;

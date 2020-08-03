@@ -1,6 +1,7 @@
 export const configs = {
-    storeType: "fire",
-    storeName: "Fire PokeStore",
+    storeType: "fairy",
+    storeName: "Dragon PokeStore",
     storeShortName: "PokeStore",
-    brandName: "PokeStore"
-}
+    brandName: "PokeStore",
+    bannerBGColor: "AD587E"
+};
