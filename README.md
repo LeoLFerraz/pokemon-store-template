@@ -6,7 +6,7 @@
 	 + http://fire.leo-ferraz.com/;
 	 + http://ghost.leo-ferraz.com/
 + Change the variables.scss file with the colors with which the new store should be generated;
-+ Change the variables.js file to list the pokemon type you wish your store to get from the API;
++ Change the variables.js file to list the pokemon type you wish your store to get from the API. THE POKEMON TYPE MUST BE LOWERCASE;
 	+ You can also edit the placeholder-banners' background color here too.
 + Run 'npm run build';
 + ???
