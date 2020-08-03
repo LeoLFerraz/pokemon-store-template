@@ -21,14 +21,17 @@ export function Footer(props) {
                 <div className="mb-2 newsletter">
                     <div className="container">
                         <div className="row">
-                            <div className="newsletter-text-wrapper col-6">
-                                <Envelope className="envelope-icon" />
-                                <div>
+                            <div className="newsletter-text-wrapper col-md-6 col-12">
+                                <Envelope className="envelope-icon d-md-block d-none" />
+                                <div className="d-md-block d-none">
                                     Subscribe to our newsletter! Be the first to know about new promotions and get
                                     a whopping 5% discount on your first pokemon!
                                 </div>
+                                <div className="d-md-none d-block text-center w-100 mb-2">
+                                    Newsletter Subscription
+                                </div>
                             </div>
-                            <Form inline className="col-6 d-flex justify-content-center align-items-center flex-nowrap">
+                            <Form inline className="col-md-6 col-12 d-flex justify-content-center align-items-center flex-nowrap">
                                 <FormControl type="text" placeholder="Name" className="mr-2" />
                                 <FormControl type="text" placeholder="Email" className="mr-2" />
                                 <Button type="button" onClick={(e) => {underConstruction(e)}}>Submit</Button>
@@ -38,11 +41,11 @@ export function Footer(props) {
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-3 store-brand d-flex justify-content-center align-items-center">
+                        <div className="col-3 d-lg-flex d-none store-brand justify-content-center align-items-center">
                             <PokeStoreLogo id="pokestoreLogo" />
                             <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
                         </div>
-                        <div className="payment-forms-wrapper col-5">
+                        <div className="payment-forms-wrapper col-md-5 col-12 mb-md-1 mb-4">
                             <div className="row">
                                 <div className="col-12 text-center">
                                     <span className="col-12 footer-section-title">Payment Methods</span>
@@ -56,7 +59,7 @@ export function Footer(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="social-media-wrapper col-4">
+                        <div className="social-media-wrapper col-md-4 col-12">
                             <div className="row">
                                 <div className="col-12 text-center">
                                     <span className="col-12 footer-section-title">Social Media</span>

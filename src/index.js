@@ -13,7 +13,9 @@ const pokeData = APIInterface();
 
 pokeData.then(result =>{
     store.dispatch({type: STORE_POKEMON_DATA, payload: result});
-    store.dispatch({type: TOGGLE_LOADING});
+    setTimeout(() => {
+        store.dispatch({type: TOGGLE_LOADING});
+    }, 2500)
 });
 
 ReactDOM.render(

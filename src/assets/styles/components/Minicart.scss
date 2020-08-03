@@ -44,6 +44,8 @@
                 font-size: 0.8rem;
             }
             .product-info {
+                white-space: nowrap;
+                overflow: auto;
                 img {
                     max-width: 30%;
                     padding: 5px 0;
@@ -88,6 +90,9 @@
     .shipping-input {
         width: 50%;
         margin-left: auto;
+        @media (max-width: $breakpoint-mobile-max) {
+            width: 100%;
+        }
     }
     .minicart-table-product {
         border-top: 1px solid $primary-color-pastel;
@@ -100,6 +105,11 @@
             text-align: center;
         }
         .product-quantity {
+            > div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
             .remove-quantity-button, .add-quantity-button {
                 user-select: none;
                 transition: all 0.3s ease;

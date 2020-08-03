@@ -1,8 +1,9 @@
 import React from "react";
 import CatalogModel from "../models/Catalog";
-import {useSelector} from "react-redux";
-import {ProductCard} from "./ProductCard";
+import { useSelector } from "react-redux";
+import { ProductCard } from "./ProductCard";
 import { DefaultCarousel } from "./DefaultCarousel";
+import "../assets/styles/components/DefaultShelf.scss"
 
 export const DefaultShelf = (props) => {
     const pokemon = useSelector((store) => {return store.pokemonData.pokemon});
@@ -30,7 +31,8 @@ export const DefaultShelf = (props) => {
             spDefense: props.catalog?.stats?.spDefense || ''
         },
         orderBy: props.catalog?.orderBy || '',
-        seller: props.catalog?.seller || ''
+        seller: props.catalog?.seller || '',
+        flag: props.catalog?.flag || ''
     };
     let cat;
     let cards;
@@ -38,12 +40,12 @@ export const DefaultShelf = (props) => {
         cat = new CatalogModel(catalogSettings, pokemon);
         cards = cat.catalog.map(item =>{
             return (
-                    <ProductCard pokemon={item}/>
+                    <ProductCard key={item} pokemon={item}/>
             )
         });
     }
     return (
-            <div className="default-carousel">
+            <div className="default-shelf">
                 <DefaultCarousel {...sliderSettings}>
                     {cards}
                 </DefaultCarousel>

@@ -10,10 +10,11 @@ function ProductComponent(props) {
     let pokeInfo;
     let sprites;
     let history = useHistory();
-    const [activeImage, setActiveImage] = useState(props.pokemon?.sprites[0]);
+    // For most pokemon, sprites[2] is actually the front-facing non-shiny sprite.
+    const [activeImage, setActiveImage] = useState(props.pokemon?.sprites[2] || props.pokemon?.sprites[0]);
     useEffect(() => {
         // Update the document title using the browser API
-        setActiveImage(props.pokemon?.sprites[0])
+        setActiveImage(props.pokemon?.sprites[2] || props.pokemon?.sprites[0])
     }, [props.pokemon]);
     if(props.pokemon === undefined) {
        // history.push("/404");
@@ -38,9 +39,9 @@ function ProductComponent(props) {
         <main className="product">
             <div className="container">
                 <div className="row">
-                <div className="col-7 product-gallery">
+                <div className="col-md-7 col-5 product-gallery">
                     <div className="sprites-carousel-wrapper">
-                        <DefaultCarousel desktopShow={3} arrows={true} column={true} lazyLoad={false} swipe={false}>
+                        <DefaultCarousel desktopShow={3} mobileShow={4} arrows={true} column={true} lazyLoad={false} swipe={false}>
                             {sprites}
                         </DefaultCarousel>
                     </div>
@@ -48,7 +49,7 @@ function ProductComponent(props) {
                         <img src={activeImage} alt={props.pokemon?.name} />
                     </div>
                 </div>
-                <div className="col-5">
+                <div className="col-md-5 col-7">
                     <div className="product-name">
                         {props.pokemon?.name}
                     </div>
@@ -78,54 +79,56 @@ function ProductComponent(props) {
                     <div className="row">
                     <div className="col-12 product-details-wrapper">
                         <table className="product-details">
-                            <tr>
-                                <td colSpan={2} className="table-image">
-                                    <img src={props.pokemon.sprite} alt={props.pokemon.alt} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Name
-                                </td>
-                                <td>
-                                    {props.pokemon.name}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Pokedex ID
-                                </td>
-                                <td>
-                                    {props.pokemon.id}
-                                </td>
-                            </tr>
-                            {Object.keys(props.pokemon.stats).map((stat) => {
-                                return (
-                                    <tr>
-                                        <td>
-                                            {stat}
-                                        </td>
-                                        <td>
-                                            {props.pokemon.stats[stat]}
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                            <tr>
-                                <td>
-                                    Evolution Chain
-                                </td>
-                                <td>
-                                {props.pokemon.evolutions.map((evolution) => {
+                            <tbody>
+                                <tr>
+                                    <td colSpan={2} className="table-image">
+                                        <img src={props.pokemon.sprite} alt={props.pokemon.alt} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        {props.pokemon.name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Pokedex ID
+                                    </td>
+                                    <td>
+                                        {props.pokemon.id}
+                                    </td>
+                                </tr>
+                                {Object.keys(props.pokemon.stats).map((stat) => {
                                     return (
-                                        <div>
-                                            <img src={evolution.sprite} alt={evolution.name} />
-                                            <span className="evolution-name">{evolution.name}</span>
-                                        </div>
+                                        <tr key={props.pokemon.name + stat}>
+                                            <td>
+                                                {stat}
+                                            </td>
+                                            <td>
+                                                {props.pokemon.stats[stat]}
+                                            </td>
+                                        </tr>
                                     )
                                 })}
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        Evolution Chain
+                                    </td>
+                                    <td>
+                                    {props.pokemon.evolutions.map((evolution) => {
+                                        return (
+                                            <div key={evolution.name}>
+                                                <img src={evolution.sprite} alt={evolution.name} />
+                                                <span className="evolution-name">{evolution.name}</span>
+                                            </div>
+                                        )
+                                    })}
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

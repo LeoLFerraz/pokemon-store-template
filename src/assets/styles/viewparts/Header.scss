@@ -4,7 +4,7 @@
     background-color: $primary-color-pastel;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 3;
     #header-tipbar {
         background-color: $secondary-color;
         max-height: 30px;
@@ -195,10 +195,54 @@
 
 
 .header-mobile {
+    position: fixed;
+    width: 100%;
+    > div {
+        position: relative;
+    }
     .search-wrapper {
         padding: 5px;
+        transition: height 0.3s ease;
+        height: 50px;
+        @media (max-width: $breakpoint-mobile-max) {
+            overflow: hidden;
+        }
     }
-    .nav-toggle {
-        color: $color-white;
+    .nav-toggle-mobile {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+    .navbar-collapse {
+        max-height: 100vh;
+        overflow: auto;
+    }
+    .navbar {
+        position: static;
+        width: 100%;
+        padding: 0 5px;
+        > div {
+            width: 100%;
+        }
+    }
+    .hidden-mob-search {
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .department-link {
+        padding: 10px;
+        width: 100%;
+    }
+    .form-inline {
+        padding: 0 10px;
+    }
+    .mobile-minicart-icon-wrapper {
+        position: absolute;
+        top: 12px;
+        right: 100px;
+        &:after {
+            color: $font-primary-color;
+        }
     }
 }

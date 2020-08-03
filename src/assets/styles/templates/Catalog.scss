@@ -1,3 +1,5 @@
+@import "../variables";
+
 .catalog {
     margin-bottom: 10px;
     .catalog-header {
@@ -5,12 +7,16 @@
     }
     label {
         width: 100%;
+        @media (max-width: $breakpoint-mobile-max) {
+            font-size: 0.8rem;
+        }
     }
     .catalog-select {
         width: 100%;
-    }
-    .catalog-select {
         text-transform: capitalize;
+        @media (max-width: $breakpoint-mobile-max) {
+            font-size: 0.8rem;
+        }
     }
     .catalog-results {
         display: flex;
@@ -22,5 +28,24 @@
             margin: 10px 15px;
             max-height: 400px;
         }
+    }
+    .mobile-filters-control {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+        font-weight: 500;
+        svg {
+            fill: $primary-color-pastel;
+            transition: all 0.4s ease;
+            font-size: 1.5rem;
+            border: 2px solid $primary-color-pastel;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    }
+    .rotate-arrow {
+        transform: rotate(180deg);
     }
 }

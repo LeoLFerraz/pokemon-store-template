@@ -40,11 +40,13 @@ const MinicartComponent = (props) => {
         let pokemon = props.pokemon?.find(pokemon => pokemon.id === product.id);
         return (
                 <tr className="minicart-table-product" key={pokemon?.id}>
-                    <td className="product-info"><img src={pokemon?.sprite} /> <span className="product-name">{pokemon?.name}</span></td>
+                    <td className="product-info"><Link to={"/pokemon/" + pokemon?.id}> <img src={pokemon?.sprite} /> </Link><span className="product-name">{pokemon?.name}</span></td>
                     <td className="product-quantity">
-                        <Dash className="remove-quantity-button" onClick={() => removeOneQty(pokemon.id)}/>
-                        <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
-                        <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
+                        <div>
+                            <Dash className="remove-quantity-button" onClick={() => removeOneQty(pokemon.id)}/>
+                            <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
+                            <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
+                        </div>
                     </td>
                     <td className="product-price">${(pokemon?.discountedPrice * product?.quantity).toFixed(2)}</td>
                     <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: {id: pokemon.id}})}}><X /></td>
@@ -109,7 +111,7 @@ const MinicartComponent = (props) => {
                             <span className="total-value">${props.total.toFixed(2)}</span>
                         </td>
                         <td className="cart-checkout" colSpan="3">
-                            <Link onClick={() => closeCartAndRedirect()}><Button className="cart-checkout-button" type="button">Proceed to Checkout</Button></Link>
+                            <div onClick={() => closeCartAndRedirect()}><Button className="cart-checkout-button" type="button">Proceed to Checkout</Button></div>
                         </td>
                     </tr>
                     </tbody>

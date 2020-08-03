@@ -28,10 +28,10 @@ export const ProductCardComponent = (props) => {
                         </div>
                     </div>
                 </Link>
-                <button type="button" className="compare-button" onClick={() => props.dispatch({type: ADD_POKEMON_COMPARE, payload: {id: props.pokemon.id}})} disabled={props.comparing || props.full}>
+                <div className="compare-button" onClick={() => props.dispatch({type: ADD_POKEMON_COMPARE, payload: {id: props.pokemon.id}})} disabled={props.comparing || props.full}>
                     <PlusCircleFill className={props.comparing || props.full ? 'disabled' : ''} />
                     <button type="button" disabled={props.comparing || props.full}>Compare</button>
-                </button>
+                </div>
                 <DefaultBuyButton className="buy-button" pokemon={props.pokemon}>Add to Cart</DefaultBuyButton>
             </div>
     )

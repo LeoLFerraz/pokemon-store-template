@@ -4,6 +4,9 @@
     padding: 15px 0;
     .sprites-carousel-wrapper {
         width: 10%;
+        @media (max-width: $breakpoint-mobile-max) {
+            width: 30%;
+        }
         .default-carousel {
             position: relative;
             height: auto;

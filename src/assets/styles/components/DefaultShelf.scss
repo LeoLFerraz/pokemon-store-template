@@ -1,0 +1,26 @@
+@import "../variables";
+
+.default-shelf {
+    .slick-track {
+        height: 450px;
+        @media (max-width: $breakpoint-mobile-max) {
+            margin-bottom: 25px;
+        }
+    }
+    .productCard {
+        margin: 10px 15px;
+        max-height: 500px;
+        height: 100%;
+        @media (max-width: $breakpoint-mobile-max) {
+            margin-bottom: 25px;
+            img {
+                margin: auto;
+            }
+        }
+    }
+    .slick-slide {
+        > div {
+            height: 95%;
+        }
+    }
+}

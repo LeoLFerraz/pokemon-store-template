@@ -18,6 +18,10 @@ html {
     position: relative;
     min-height: 100vh;
     padding-bottom: 250px;
+    @media (max-width: $breakpoint-mobile-max) {
+        padding-top: 108px;
+        padding-bottom: 360px;
+    }
 }
 
 .page-title {
@@ -25,6 +29,9 @@ html {
     font-weight: 500;
     color: $primary-color-pastel;
     margin: 20px 0;
+    @media (max-width: $breakpoint-mobile-max) {
+        margin: 0;
+    }
 }
 
 // SweetAlert2 overrides:

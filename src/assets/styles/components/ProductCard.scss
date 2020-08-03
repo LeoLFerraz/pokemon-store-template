@@ -26,6 +26,9 @@
             border-color: $primary-color-pastel;
             box-shadow: 0 0 5px $primary-color-pastel;
         }
+        @media (max-width: $breakpoint-mobile-max) {
+            visibility: visible;
+        }
     }
     .compare-button {
         display: block;

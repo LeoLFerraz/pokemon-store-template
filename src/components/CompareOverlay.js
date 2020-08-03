@@ -9,7 +9,7 @@ import {XCircle} from "react-bootstrap-icons";
 const CompareOverlayComponent = (props) => {
     let sprites = props.pokemon.map((item) =>{
         return (
-            <div className="sprite-wrapper" onClick={() => props.dispatch({type: REMOVE_POKEMON_COMPARE, payload: {id: item?.id}})}>
+            <div className="sprite-wrapper" key={item.name} onClick={() => props.dispatch({type: REMOVE_POKEMON_COMPARE, payload: {id: item?.id}})}>
                 <img alt={item?.name} src={item?.sprite}/>
                 <XCircle ></XCircle>
             </div>

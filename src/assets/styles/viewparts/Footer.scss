@@ -30,17 +30,23 @@
             &:focus {
                 box-shadow: 0 0 0 0.2rem rgba($secondary-color,.5);
             }
+            @media (max-width: $breakpoint-mobile-max) {
+                font-size: 0.7rem;
+            }
         }
     }
     .form-control {
         max-width: 45%;
+        @media (max-width: $breakpoint-mobile-max) {
+            font-size: 0.7rem;
+        }
     }
 
     .newsletter-text-wrapper {
         display: flex;
         align-items: center;
         font-size: 0.8rem;
-        color: $font-primary-color-low-contrast;
+        color: $font-primary-color;
     }
 
     .footer-text {

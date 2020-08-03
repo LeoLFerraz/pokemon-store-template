@@ -21,6 +21,13 @@
         justify-content: space-between;
         align-items: stretch;
         flex: 1;
+        min-height: 400px;
+        max-height: 600px;
+        @media (max-width: $breakpoint-mobile-max) {
+            margin-top: 20px;
+            min-height: 230px;
+            max-height: unset;
+        }
         span{
             display: block;
         }
@@ -102,6 +109,8 @@
         .product-info {
             font-weight: 500;
             font-size: 1rem;
+            white-space: nowrap;
+            overflow: auto;
             img {
                 width: 30%;
             }
@@ -115,6 +124,11 @@
             text-transform: capitalize;
         }
         .product-quantity {
+            > div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
             text-align: center;
             .remove-quantity-button, .add-quantity-button {
                 user-select: none;

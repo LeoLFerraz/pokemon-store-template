@@ -1,10 +1,23 @@
+@import "../variables";
+
 .home {
+    .shelf-title {
+        color: $primary-color-pastel;
+        font-weight: 600;
+        margin-top: 20px;
+        @media (max-width: $breakpoint-mobile-max) {
+            text-align: center;
+        }
+    }
     .default-carousel {
         margin-bottom: 28px; // Slick dots' absolute positioning
     }
     .mosaicBanner {
         display: flex;
         justify-content: space-around;
+        @media (max-width: $breakpoint-mobile-max) {
+            flex-direction: column;
+        }
         div {
             display: flex;
             justify-content: space-between;
@@ -17,6 +30,9 @@
         .mosaicBanner-1, .mosaicBanner-2 {
             width: 49%;
             margin-bottom: 10px;
+            @media (max-width: $breakpoint-mobile-max) {
+                width: 100%;
+            }
         }
         .mosaicBanner-3, .mosaicBanner-4 {
             width: 100%;

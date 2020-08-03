@@ -4,7 +4,7 @@ import { Dash, Plus, X } from "react-bootstrap-icons";
 import {ADD_TO_CART, REMOVE_FROM_CART, SET_SHIPPING_ADDRESS, CLEAR_CART} from "../redux/actionTypes";
 import "../assets/styles/templates/Checkout.scss";
 import Swal from "sweetalert2";
-import { useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { Button, FormControl } from "react-bootstrap";
 
 export function CheckoutComponent(props) {
@@ -65,18 +65,20 @@ export function CheckoutComponent(props) {
         }
     }
     const [address, setAddress] = useState(props.shippingAddress || '');
-
+    //TODO: products-table component (replacing part of minicart.js and checkout.js)
     let items = props.products.map(product =>{
         let pokemon = props.pokemon?.find(pokemon => pokemon.id === product.id);
         return (
             <tr className="product-info-wrapper" key={pokemon?.id}>
                 <td className="product-info">
-                    <img src={pokemon?.sprite} /> <span className="product-name">{pokemon?.name}</span>
+                    <Link to={"/pokemon/" + pokemon?.id}> <img src={pokemon?.sprite} /> </Link> <span className="product-name">{pokemon?.name}</span>
                 </td>
                 <td className="product-quantity">
-                    <Dash className="remove-quantity-button"  onClick={() => removeOneQty(pokemon.id)}/>
-                    <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
-                    <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
+                    <div>
+                        <Dash className="remove-quantity-button"  onClick={() => removeOneQty(pokemon.id)}/>
+                        <input type="number" min="0" onChange={(evt) => {updateQtyViaInput(evt, pokemon.id)}} value={product?.quantity} className="quantity-text" />
+                        <Plus className="add-quantity-button" onClick={() => addOneQty(pokemon.id)}/>
+                    </div>
                 </td>
                 <td className="product-price">${(pokemon?.discountedPrice * product?.quantity).toFixed(2)}</td>
                 <td className="product-remove" onClick={() => {props.dispatch({type: REMOVE_FROM_CART, payload: {id: pokemon.id}})}}><X /></td>
@@ -93,9 +95,9 @@ export function CheckoutComponent(props) {
     return (
         <main className="checkout container">
             <div className="page-title col-12">
-                Cart
+                Checkout
             </div>
-            <div className="products col-7">
+            <div className="products col-md-7 col-12">
                 <table>
                     <thead>
                         <tr>
@@ -110,7 +112,7 @@ export function CheckoutComponent(props) {
                     </tbody>
                 </table>
             </div>
-            <div className="summary col-5">
+            <div className="summary col-md-5 col-12">
                 <div className={(props.shippingAddress ? 'hide' : 'shipping-address-wrapper')}>
                     <FormControl value={address} placeholder="Postal Code" onChange={(e) => setAddress(e.target.value)} className="shipping-address-input"/>
                     <Button className="shipping-address-submit" onClick={() => props.dispatch({type: SET_SHIPPING_ADDRESS, payload: {shippingAddress: address}})}>OK</Button>

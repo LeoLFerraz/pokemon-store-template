@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import "../assets/styles/viewparts/Header.scss";
 import { DefaultCarousel } from "../components/DefaultCarousel";
@@ -18,14 +18,23 @@ function RenderHeader(props) {
     let history = useHistory();
     const [searchParam, setSearchParam] = useState('');
     const [showTip, setShowTip] = useState(window.scrollY === 0);
+    const [showSearchBar, setShowSearchBar] = useState(window.scrollY < 100);
 
     function searchPokemon(e) {
         e.preventDefault();
         history.push("/catalog?name=" + searchParam);
     }
-    window.addEventListener('scroll', function(e) {
-        setShowTip(window.scrollY === 0);
-    });
+
+    useEffect(() => {
+        window.addEventListener('scroll', function(e) {
+            setShowTip(window.scrollY === 0);
+        });
+        if(isMobile()) {
+            window.addEventListener('scroll', function(e) {
+                setShowSearchBar(window.scrollY < 100);
+            });
+        }
+    }, []);
 
     function renderDesktopHeader() {
         return (
@@ -49,7 +58,7 @@ function RenderHeader(props) {
                                     <Search className="search-icon" onClick={(e) => {searchPokemon(e)}}/>
                                 </Form>
                                 <div className="col-3 header-control-nav">
-                                    <div className="user-module-wrapper" onClick={(e) => {underConstruction(e, "Sorry, no user module yet! It's a very time consuming feature :(")}}>
+                                    <div className="user-module-wrapper" onClick={(e) => {underConstruction(e, "Sorry, no user module yet! It's a very time consuming feature to mock :(")}}>
                                         <PokeUser className="user-module"/> Sign in
                                     </div>
                                     <div className="minicart-icon-wrapper" data-quantity={props.quantity} onClick={() => {props.dispatch({type: OPEN_CART})}}>
@@ -78,26 +87,35 @@ function RenderHeader(props) {
         )
     }
 
+    const [mobileNavExpanded, setMobileNavExpanded] = useState(false);
+
     function renderMobileHeader() {
         return (
             <header className="header header-mobile">
                 <div className="container">
                     <div className="row">
-                        <Navbar expand="lg" className="d-flex justify-content-between w-100">
+                        <Navbar expand="xl" className="d-flex justify-content-between w-100">
                             <div>
-                                <Navbar.Brand as={Link} to="/" className="col-2">
+                                <Navbar.Brand as={Link} to="/" className="col-2" onClick={() => {setMobileNavExpanded(false)}}>
                                     <PokeStoreLogo id="pokestoreLogo" />
                                     <div className="brand-name">PokeStore<br/><span className="brand-name-themed">Fire</span></div>
                                 </Navbar.Brand>
                             </div>
+                        </Navbar>
+                    </div>
+                    <div className="row">
+                        <div className="minicart-icon-wrapper mobile-minicart-icon-wrapper" data-quantity={props.quantity} onClick={() => {props.dispatch({type: OPEN_CART})}}>
+                            <Cart className="minicart-icon" />
+                        </div>
+                        <Navbar expand="xl" expanded={mobileNavExpanded} onClick={() => setMobileNavExpanded(mobileNavExpanded ? false : "expanded")}>
                             <div>
-                                <Navbar.Toggle aria-controls="basic-navbar-nav" className="nav-toggle" />
+                                <Navbar.Toggle aria-controls="basic-navbar-nav" className="nav-toggle-mobile" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
-                                        <Link to="/catalog" className="department-link">All Pokemon</Link>
+                                        <Link to="/catalog" onClick={() => {setMobileNavExpanded(false)}} className="department-link" data-toggle="basic-navbar-nav">All Pokemon</Link>
                                         {props.types.map((value, index) => {
                                             if(value !== "fire") {
-                                                return <Link className="department-link" key={'type' + index} to={"/catalog?types=" + value}>{value}</Link>
+                                                return <Link onClick={() => {setMobileNavExpanded(false)}} className="department-link" key={'type' + index} to={"/catalog?types=" + value}>{value}</Link>
                                             }
                                         })}
                                     </Nav>
@@ -105,7 +123,7 @@ function RenderHeader(props) {
                             </div>
                         </Navbar>
                     </div>
-                    <div className="row search-wrapper">
+                    <div className={"row search-wrapper" + (showSearchBar ? '' : ' hidden-mob-search')}>
                         <Form inline className="col-12" onSubmit={(e) => {searchPokemon(e)}}>
                             <FormControl type="text" placeholder="Search Pokemon" className="w-100" onChange={(e) => {setSearchParam(e.target.value)}} />
                             <Search className="search-icon" onClick={(e) => {searchPokemon(e)}}/>
