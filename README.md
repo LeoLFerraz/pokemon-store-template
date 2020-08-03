@@ -25,6 +25,7 @@
 - Algumas features foram deixadas de lado pelo bem da brevidade do projeto:
 	- Lista infinita no /catalog, que seria absolutamente necessário caso os produtos viessem de alguma API e não do redux/localStorage.
 	- Newsletter e Login;
+	- Autocomplete da barra de pesquisa. O modelo Catalog.js já está pronto pra satisfazer o requisito, mas gastei o tempo alocado pro front-end dos resultados em outras features :)
 	- Formulário de informações pessoais + endereço pro checkout;
 	- Landing Pages e páginas institucionais;
 	- 404 e 500 customizadas (na verdade essas eu simplesmente esqueci de fazer e só lembrei depois de dar o projeto por feito :D)
