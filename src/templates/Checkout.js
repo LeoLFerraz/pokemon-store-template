@@ -6,6 +6,7 @@ import "../assets/styles/templates/Checkout.scss";
 import Swal from "sweetalert2";
 import {Link, useHistory} from 'react-router-dom';
 import { Button, FormControl } from "react-bootstrap";
+import { PencilSquare } from "react-bootstrap-icons";
 
 export function CheckoutComponent(props) {
     let history = useHistory();
@@ -120,7 +121,7 @@ export function CheckoutComponent(props) {
                 <div className="summary-info-wrapper">
                     <div className="summary-subtotal summary-row"><div className="summary-title">Subtotal:</div> <div className="summary-value">{props.subTotal}</div></div>
                     <div className="summary-shipping-fee summary-row"><div className="summary-title">Shipping Fee
-                        <span className="postal-code" onClick={() => {resetShipping()}}>{props.shippingAddress ? ' (to ' + props.shippingAddress + ')' : ''}</span>:
+                        <span className="postal-code" onClick={() => {resetShipping()}}>{props.shippingAddress ? ' (to ' + props.shippingAddress + ')' : ''}{props.shippingAddress ? <PencilSquare/> : ''}</span>:
                     </div> <div className="summary-value">{props.shippingCost}</div></div>
                     <div className="summary-total summary-row">
                         <div className="summary-title">Total:</div> <div className="summary-value">{props.total}</div>

@@ -175,10 +175,18 @@
     .postal-code {
         display: inline !important;
         cursor: pointer;
+        position: relative;
         &:hover {
             .postal-code-value {
                 text-decoration: underline;
             }
+        }
+        svg {
+            font-size: 0.8rem;
+            color: $font-secondary-color;
+            position: absolute;
+            right: -20px;
+            top: 20%;
         }
     }
 }

@@ -11,10 +11,10 @@ function ProductComponent(props) {
     let sprites;
     let history = useHistory();
     // For most pokemon, sprites[2] is actually the front-facing non-shiny sprite.
-    const [activeImage, setActiveImage] = useState(props.pokemon?.sprites[2] || props.pokemon?.sprites[0]);
+    const [activeImage, setActiveImage] = useState(props.pokemon?.sprites[2] || props.pokemon?.sprites[0] || require('../assets/media/undefinedpokemon.png'));
     useEffect(() => {
         // Update the document title using the browser API
-        setActiveImage(props.pokemon?.sprites[2] || props.pokemon?.sprites[0])
+        setActiveImage(props.pokemon?.sprites[2] || props.pokemon?.sprites[0] || require('../assets/media/undefinedpokemon.png'))
     }, [props.pokemon]);
     if(props.pokemon === undefined) {
        // history.push("/404");

@@ -1,7 +1,13 @@
 @import '../variables';
 
 .product {
-    padding: 15px 0;
+    padding-top: 15px;
+    .table-image {
+        img {
+            max-height: 100px;
+            width: auto;
+        }
+    }
     .sprites-carousel-wrapper {
         width: 10%;
         @media (max-width: $breakpoint-mobile-max) {
@@ -40,6 +46,8 @@
         display: flex;
         .active-sprite {
             width: 90%;
+            margin-bottom: 20px;
+            max-width: 400px;
             img {
                 width: 100%;
                 height: auto;
