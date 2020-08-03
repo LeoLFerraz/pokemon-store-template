@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PokeStore Template  
+## How to use:  
+ + Check out one of the four stores:  
+	 + http://fairy.leo-ferraz.com/;
+	 + http://dragon.leo-ferraz.com/;
+	 + http://fire.leo-ferraz.com/;
+	 + http://ghost.leo-ferraz.com/
++ Change the variables.scss file with the colors with which the new store should be generated;
++ Change the variables.js file to list the pokemon type you wish your store to get from the API;
+	+ You can also edit the placeholder-banners' background color here too.
++ Run 'npm run build';
++ ???
++ Profit!
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Observações aos avaliadores:
+- Como vocês pedem pra usar create-react-app, decidi não usar npm eject para ter acesso às configurações do webpack. Isso faz com que eu tenha que manualmente importar os arquivos globais em cada componente que os usam, ao invés de appendar o @import no data do sass-loader;
+- Hospedado no EC2 da Amazon;
+- Gestão de DNS pelo Route 53 da Amazon (fire.leo-ferraz.com, ghost.leo-ferraz.com, dragon.leo-ferraz.com e fairy.leo-ferraz.com) e pelo serviço de DNS do Registro.br (leoferraz.com.br).
+- Os banners da home são placeholders. Tenho 0 habilidade de fazer um banner bonitinho à lá Marketing + Design.
+- Bootstrap, Bootstrap Icons, SweetAlert2 e Slick como ferramentas de apoio para fazer as telas.
+- Redux para gestão de estado do app. Ele sincroniza todas (quase todas?) as informações com o LocalStorage para garantir persistência de dados entre sessões.
+- Versão desktop é a mais 'pronta.' Sem um designer do lado pra dar wireframe, proporções, etc, não sou bom de fazer telas mobile.
+- Espalhei easter eggs pelo site. Caso estejam questionando por que você acham alguns digimons lá e cá, esse é um deles (cliquem em "Imported Pokemon")
+- Não entendo nada de pokemon, então coloquei em evidência as informações que pareciam ser mais importantes na página de produto.
+- Algumas features foram deixadas de lado pelo bem da brevidade do projeto:
+	- Lista infinita no /catalog, que seria absolutamente necessário caso os produtos viessem de alguma API e não do redux/localStorage.
+	- Newsletter e Login;
+	- Formulário de informações pessoais + endereço pro checkout;
+	- Landing Pages e páginas institucionais;
+	- 404 e 500 customizadas (na verdade essas eu simplesmente esqueci de fazer e só lembrei depois de dar o projeto por feito :D)
