@@ -1,10 +1,10 @@
 # PokeStore Template  
 ## How to use:  
- + Check out one of the four stores:  
-	 + http://fairy.leo-ferraz.com/;
-	 + http://dragon.leo-ferraz.com/;
-	 + http://fire.leo-ferraz.com/;
-	 + http://ghost.leo-ferraz.com/
+ + Check out one of the four example stores:  
+	 + http://fairy.leo-ferraz.com/; (**active**)
+	 + http://dragon.leo-ferraz.com/; (inactive)
+	 + http://fire.leo-ferraz.com/; (inactive)
+	 + http://ghost.leo-ferraz.com/; (inactive)
 + Change the variables.js file to list the pokemon type you wish your store to get from the API. THE POKEMON TYPE MUST BE LOWERCASE;
 + You can also edit the placeholder-banners' background color here too.
 + Run 'npm run build';
