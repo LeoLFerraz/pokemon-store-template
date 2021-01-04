@@ -1,7 +1,7 @@
 # PokeStore Template  
 ## How to use:  
  + Check out one of the four example stores:  
-	 + http://fairy.leo-ferraz.com/; (**active**)
+	 + http://fairy.leo-ferraz.com/; (inactive)
 	 + http://dragon.leo-ferraz.com/; (inactive)
 	 + http://fire.leo-ferraz.com/; (inactive)
 	 + http://ghost.leo-ferraz.com/; (inactive)
